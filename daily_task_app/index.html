@@ -1,0 +1,432 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>English Tutor Daily Task</title>
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <main class="app">
+      <header class="hero">
+        <p class="kicker">Work Mindset · 50-Day Start Lab</p>
+        <h1>When does pressure help me, and when does it freeze me?</h1>
+        <p class="subtitle">Day 14: separate useful pressure from panic and turn one difficult moment into a clear first action.</p>
+        <div class="unit-progress" aria-label="Прогрес 50-денного юніта">
+          <div class="unit-progress-top">
+            <div>
+              <span class="unit-label">Поточний юніт</span>
+              <strong>Work Mindset: 50-Day Start Lab</strong>
+            </div>
+              <strong>День 14 / 50</strong>
+          </div>
+          <div class="unit-progress-track" aria-hidden="true"><span style="width: 28%"></span></div>
+          <div class="unit-progress-bottom">
+            <span>Фаза 3 · тиск і реакція</span>
+            <span>Доказ: 4-6 речень + 2 хвилини speaking + один перевірений reset</span>
+          </div>
+        </div>
+      </header>
+
+      <nav class="quest-nav" aria-label="Daily task navigation">
+        <div>
+          <p class="quest-label">Сьогодні</p>
+          <strong id="quest-title">Ситуація</strong>
+        </div>
+        <div class="quest-progress" aria-hidden="true">
+          <div id="quest-progress-fill"></div>
+        </div>
+        <div class="quest-actions">
+          <button id="prev-step" class="secondary-action" type="button">Назад</button>
+          <span id="quest-counter">1 / 8</span>
+          <button id="next-step" type="button">Далі</button>
+        </div>
+      </nav>
+
+      <section class="section model-section quest-step is-active" data-task-id="story_text" data-task-title="Ситуація">
+        <div class="section-title">
+          <span>1</span>
+          <h2>Ситуація</h2>
+        </div>
+        <details class="task-rules" open>
+          <summary>Read -> notice control -> speak</summary>
+          <p>Прочитай текст один раз для змісту. Потім двічі скажи короткий текст уголос. Переклад відкрий лише для перевірки розуміння.</p>
+        </details>
+        <div class="input-board">
+          <article class="input-card">
+            <div class="input-head">
+              <span class="language-label">English input</span>
+              <strong>Read for meaning. Notice the difference between useful pressure and pressure that freezes action.</strong>
+            </div>
+            <p>Pressure is not always the enemy. A clear deadline can give me direction and help me focus, especially when I know what the next action is. However, pressure becomes less useful when the task feels vague, personal, or impossible to control. In that state, my attention may stop looking for a solution and start looking for escape.</p>
+            <p>The important difference is not whether I feel stress. It is what the stress makes me do. A small amount of pressure can mobilize me, whereas too much uncertainty can freeze me. I may keep planning, checking messages, or imagining every possible problem while the first real step remains untouched. That does not prove that I am lazy. It shows that my brain is treating the task as a threat instead of a sequence of manageable actions.</p>
+            <p>Before difficult work, I can create a short reset. I can take one slow breath, name the risk, and reduce the task to a two-minute entry point. Rather than trying to feel perfectly calm, I can choose one safe action that gives me information. If the pressure decreases after I begin, I have evidence that clarity was more useful than more planning. If it does not, I can adjust the task instead of turning the result into a judgment about myself.</p>
+            <p class="personal-note"><strong>Insight of the day:</strong> Pressure becomes useful when it points to one decision I can make. It becomes paralysis when it makes every decision feel dangerous.</p>
+          </article>
+
+          <article class="speaking-text">
+            <div class="input-head">
+              <span class="language-label">Short speaking text</span>
+              <strong>Read it aloud twice. Then replace the general example with one difficult moment from your own work.</strong>
+            </div>
+            <p>A little pressure can help me focus, whereas too much uncertainty can freeze me. Rather than trying to solve the whole task, I can name one safe first action. I do not need to wait until I feel calm; I need to create a short pause and begin. I will know the reset helped when I can continue with one clear step.</p>
+          </article>
+          <button id="toggle-translation" class="flip-action" type="button">Показати переклад</button>
+          <article id="translation-card" class="task-card text-card translation-card" lang="uk" hidden>
+            <span class="language-label">Переклад</span>
+            <p>Тиск не завжди є ворогом. Чіткий дедлайн може дати мені напрям і допомогти зосередитися, особливо якщо я знаю, якою є наступна дія. Однак тиск стає менш корисним, коли задача здається нечіткою, особисто загрозливою або такою, на яку я не можу вплинути. У такому стані моя увага може перестати шукати рішення й почати шукати втечу.</p>
+            <p>Важлива різниця не в тому, чи відчуваю я стрес. Важливо, до чого цей стрес мене підштовхує. Невеликий тиск може мене мобілізувати, тоді як надмірна невизначеність може мене паралізувати. Я можу продовжувати планувати, перевіряти повідомлення або уявляти всі можливі проблеми, поки перший реальний крок залишається невиконаним. Це не доводить, що я лінивий. Це показує, що мій мозок сприймає задачу як загрозу, а не як послідовність дій, з якими можна впоратися.</p>
+            <p>Перед складною роботою я можу зробити коротке перезавантаження. Я можу повільно видихнути, назвати ризик і зменшити задачу до двохвилинної точки входу. Замість того щоб чекати ідеального спокою, я можу обрати одну безпечну дію, яка дасть мені інформацію. Якщо після початку тиск зменшиться, це буде доказом, що ясність була кориснішою за подальше планування. Якщо ні, я можу змінити задачу, а не перетворювати результат на оцінку себе.</p>
+            <p><strong>Інсайт дня:</strong> тиск стає корисним, коли вказує на одне рішення, яке я можу прийняти. Він перетворюється на параліч, коли кожне рішення здається небезпечним.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section task-section quest-step" data-task-id="sentence_breakdown" data-task-title="Речення">
+        <div class="section-title">
+          <span>2</span>
+          <h2>Контрольоване письмо</h2>
+        </div>
+        <details class="task-rules" open>
+          <summary>Правила задачі</summary>
+          <p>Переклади українське речення англійською. Кожне доступне речення показується лише один раз. Спочатку відкрито 10 речень, а кнопка додає тільки ті, яких ти ще не бачив. Після останнього з'явиться «Сьогодні все».</p>
+        </details>
+        <p class="section-note">Усі речення потрібні для майбутньої голосової відповіді. Не пиши ідеально. Пиши так, щоб можна було сказати вголос.</p>
+        <div id="writing-rows" class="writing-list"></div>
+        <div class="button-row">
+          <button class="secondary-action" type="button" data-more-writing="5">Додати ще 5</button>
+          <button class="secondary-action" type="button" data-more-writing="10">Додати ще 10</button>
+          <button class="secondary-action" type="button" data-more-writing="20">Додати всі доступні</button>
+          <p id="writing-status" class="task-status" aria-live="polite"></p>
+        </div>
+      </section>
+
+      <section class="section phrases-section quest-step" data-task-id="phrase_selection" data-task-title="Фрази">
+        <div class="section-title">
+          <span>3</span>
+          <h2>Збери матеріал для своєї відповіді</h2>
+        </div>
+        <details class="task-rules" open>
+          <summary>Правила задачі</summary>
+          <p>Постав галочку біля фраз, які хочеш використати у сьогоднішній відповіді. Вибране одразу потрапить у тренажер і підказки для повної відповіді. Галочка не означає, що фраза вже вивчена.</p>
+        </details>
+        <div class="phrase-purpose">
+          <strong>Контрольне питання: When does pressure help me, and when does it freeze me?</strong>
+          <p>Твоя відповідь має пройти п'ять простих кроків і навчити тебе говорити контрастами:</p>
+          <ol>
+            <li>порівняти корисний тиск і тиск, що блокує;</li>
+            <li>назвати момент, коли тиск стає загрозливим;</li>
+            <li>пояснити різницю через <strong>whereas / while</strong>;</li>
+            <li>замінити зайве планування першою дією через <strong>rather than</strong>;</li>
+            <li>назвати reset і доказ, що він повернув тебе до дії.</li>
+          </ol>
+        </div>
+        <div class="phrase-action">
+          <p>Обери 5-8 фраз для сьогоднішньої відповіді. У тренажері ти побачиш, як вони працюють у контрасті, умові та плані дії. Потім використай хоча б 3 у повному тексті та Voice.</p>
+          <strong id="selected-count">0 вибрано</strong>
+        </div>
+        <div class="tier-grid" id="phrase-list"></div>
+        <div class="selected-set">
+          <h3>Фрази, які ти взяв у сьогоднішню відповідь</h3>
+          <div id="selected-phrases" class="selected-phrases" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <section class="section trainer-section quest-step" data-task-id="phrase_trainer" data-task-title="Активувати фрази">
+        <div class="section-title">
+          <span>4</span>
+          <h2>Активувати фрази</h2>
+        </div>
+        <details class="task-rules" open>
+          <summary>Правила задачі</summary>
+          <p><strong>4.1 Віднови:</strong> дістань фразу з пам'яті за українським змістом. <strong>4.2 Перенеси:</strong> використай той самий мовний каркас у новій ситуації про себе. Перевірка приймає різні природні версії й показує одну конкретну правку.</p>
+        </details>
+        <div class="trainer-board">
+          <div class="trainer-head">
+            <div>
+              <strong>Один цикл на кожну фразу</strong>
+              <p>згадай -> перевір -> перепиши -> скажи про власну ситуацію -> перевір нове використання.</p>
+            </div>
+            <span>5-8 фраз із твого набору</span>
+          </div>
+          <div id="drill-grid" class="drill-grid compact-drills"></div>
+          <p id="drill-status" class="exercise-status" aria-live="polite"></p>
+        </div>
+        <div class="button-row">
+          <button class="secondary-action" type="button" data-more-drills="5">Додати 5 вправ</button>
+          <button class="secondary-action" type="button" data-more-drills="10">Додати 10 вправ</button>
+          <button class="secondary-action" type="button" data-more-drills="20">Додати 20 вправ</button>
+        </div>
+      </section>
+
+      <section class="section task-section quest-step" data-task-id="pre_voice_questions" data-task-title="Personal Story Lab">
+        <div class="section-title">
+          <span>5</span>
+          <h2>Personal Story Lab</h2>
+        </div>
+        <details class="task-rules" open>
+          <summary>Правила задачі</summary>
+          <p>Ти не вигадуєш відповідь із нуля. Ти крок за кроком вставляєш власні англійські речення в одну реальну історію. Кожен слот навчає нову сполуку або граматичну конструкцію. Після перевірки перепиши лише те, що справді треба змінити.</p>
+        </details>
+        <article class="task-card guided-scenario">
+          <h3>Сюжет: дедлайн завтра, а задача нечітка</h3>
+          <p>Уяви або згадай схожу ситуацію з англійською, особистим проєктом чи роботою. Заповни шість пропусків. Разом вони створять коротку історію, яку ти потім зможеш розповісти у Voice.</p>
+          <div class="story-frame" aria-label="Каркас історії">
+            <p><strong>Yesterday, I planned to work on a personal project, but the next step was not clear.</strong></p>
+            <p><span class="story-gap" data-story-slot="1">1</span> Then I noticed that the pressure was not giving me direction anymore.</p>
+            <p><span class="story-gap" data-story-slot="2">2</span> I did not stop because I did not care; I stopped because the task felt too large.</p>
+            <p><span class="story-gap" data-story-slot="3">3</span> Instead of trying to solve everything, I looked for a smaller entry point.</p>
+            <p><span class="story-gap" data-story-slot="4">4</span> After that, I chose one action that could give me useful information.</p>
+            <p><span class="story-gap" data-story-slot="5">5</span> I did not need to feel calm before starting.</p>
+            <p><span class="story-gap" data-story-slot="6">6</span> That became my evidence that a clear first step was more useful than more planning.</p>
+          </div>
+        </article>
+        <div class="qa-grid story-slots">
+          <article class="qa-card story-slot" data-qa-groups="a little pressure|some pressure;help me focus|gives me direction;whereas|while" data-qa-labels="невеликий тиск;фокус або напрям;контраст між двома станами" data-qa-pattern="A little pressure can help me focus, whereas too much pressure freezes me.">
+            <p class="q">1. Встав речення про різницю між корисним і надмірним тиском.</p>
+            <p class="english-target">A little pressure can..., whereas...</p>
+            <p class="guided-idea">Сенс: невеликий тиск допомагає, але надмірний блокує.</p>
+            <details><summary>Підказка</summary><p>З'єднай два повні речення через <strong>whereas</strong>. Після нього мають бути підмет і дієслово.</p><p><strong>Нові сполуки:</strong> <em>help me focus</em> — допомагати зосередитися; <em>freeze me</em> — блокувати мене.</p></details>
+            <div class="qa-response"><input type="text" class="qa-input"><button type="button" class="check-qa">Перевірити</button></div>
+            <p class="feedback qa-feedback" aria-live="polite"></p>
+          </article>
+          <article class="qa-card story-slot" data-qa-groups="when|if;pressure|task;unclear|large|threatening;freeze|stop" data-qa-labels="умова;тиск або задача;причина;реакція" data-qa-pattern="I freeze when the task feels too large and unclear.">
+            <p class="q">2. Встав речення про момент, коли тиск тебе блокує.</p>
+            <p class="english-target">I freeze when...</p>
+            <p class="guided-idea">Сенс: назви не свою “погану якість”, а конкретну причину блокування.</p>
+            <details><summary>Підказка</summary><p>Почни з <strong>I freeze when...</strong> і додай, якою здається задача: <em>too large, unclear, threatening</em>.</p><p><strong>Нова конструкція:</strong> <em>feel too large to start</em> — здаватися надто великою, щоб почати.</p></details>
+            <div class="qa-response"><input type="text" class="qa-input"><button type="button" class="check-qa">Перевірити</button></div>
+            <p class="feedback qa-feedback" aria-live="polite"></p>
+          </article>
+          <article class="qa-card story-slot" data-qa-groups="not because|not a lack;care|interest;but because|because;task|pressure" data-qa-labels="неправильна причина;байдужість або інтерес;точніша причина;задача або тиск" data-qa-pattern="I freeze not because I do not care, but because the task feels threatening.">
+            <p class="q">3. Встав речення, яке пояснює справжню причину без самоосуду.</p>
+            <p class="english-target">I freeze not because..., but because...</p>
+            <p class="guided-idea">Сенс: проблема не в байдужості, а в тому, як мозок сприймає задачу.</p>
+            <details><summary>Підказка</summary><p>У двох частинах після <strong>because</strong> потрібне повне речення: підмет + дієслово.</p><p><strong>Нова сполука:</strong> <em>the task feels threatening</em> — задача здається загрозливою.</p></details>
+            <div class="qa-response"><input type="text" class="qa-input"><button type="button" class="check-qa">Перевірити</button></div>
+            <p class="feedback qa-feedback" aria-live="polite"></p>
+          </article>
+          <article class="qa-card story-slot" data-qa-groups="rather than|instead of;planning|solving;can;name|choose|start;first|small|safe;action|step" data-qa-labels="заміна дії;зайве планування;можливість;перша дія;малий або безпечний крок;дія" data-qa-pattern="Rather than planning everything, I can name the first action.">
+            <p class="q">4. Встав речення про заміну нескінченного планування першою дією.</p>
+            <p class="english-target">Rather than planning everything, I can...</p>
+            <p class="guided-idea">Сенс: не вирішити весь проєкт, а знайти найменший вхід у нього.</p>
+            <details><summary>Підказка</summary><p>Після <strong>rather than</strong> для дії використовуй <strong>-ing</strong>: <em>planning</em>. Після <strong>can</strong> — базову форму: <em>name, start, test</em>.</p><p><strong>Нова сполука:</strong> <em>name the first action</em> — назвати першу дію.</p></details>
+            <div class="qa-response"><input type="text" class="qa-input"><button type="button" class="check-qa">Перевірити</button></div>
+            <p class="feedback qa-feedback" aria-live="polite"></p>
+          </article>
+          <article class="qa-card story-slot" data-qa-groups="one|a;safe|small|clear;action|step;gives me useful information|shows me" data-qa-labels="одна дія;безпечний, малий або чіткий;дія або крок;корисна інформація" data-qa-pattern="I can choose one safe action that gives me useful information.">
+            <p class="q">5. Встав речення про дію, яка дає інформацію, а не вимагає ідеального результату.</p>
+            <p class="english-target">I can choose one safe action that...</p>
+            <p class="guided-idea">Сенс: дія потрібна як тест, а не як доказ твоєї цінності.</p>
+            <details><summary>Підказка</summary><p>Після <strong>that</strong> додай підмет і дієслово: <em>that gives me...</em> або <em>that shows me...</em>.</p><p><strong>Нова сполука:</strong> <em>give me useful information</em> — дати мені корисну інформацію.</p></details>
+            <div class="qa-response"><input type="text" class="qa-input"><button type="button" class="check-qa">Перевірити</button></div>
+            <p class="feedback qa-feedback" aria-live="polite"></p>
+          </article>
+          <article class="qa-card story-slot" data-qa-groups="know|see;reset|experiment;helped|worked;when|if;start|continue;clear|first;step|action" data-qa-labels="критерій;перезавантаження або експеримент;результат;часова умова;початок або продовження;ясний або перший;крок або дія" data-qa-pattern="I will know the reset helped when I can continue with one clear step.">
+            <p class="q">6. Встав речення-доказ: як ти зрозумієш, що новий підхід спрацював?</p>
+            <p class="english-target">I will know the reset helped when...</p>
+            <p class="guided-idea">Сенс: вимірюй поведінку, а не настрій.</p>
+            <details><summary>Підказка</summary><p>Після <strong>when</strong> назви конкретну дію, яку ти зможеш побачити: <em>start, continue, name, finish</em>.</p><p><strong>Нова конструкція:</strong> <em>I will know it worked when...</em> — я зрозумію, що це спрацювало, коли...</p></details>
+            <div class="qa-response"><input type="text" class="qa-input"><button type="button" class="check-qa">Перевірити</button></div>
+            <p class="feedback qa-feedback" aria-live="polite"></p>
+          </article>
+        </div>
+        <article class="task-card full-answer-card">
+          <h3>Збери історію з перевірених речень</h3>
+          <p><strong>Контрольне питання:</strong> When does pressure help me, and when does it freeze me?</p>
+          <p class="section-note">Тепер напиши 5–7 речень, використовуючи власні перевірені слоти. Не копіюй історію дослівно: зміни Telegram, проєкт або конкретну дію на свої.</p>
+          <div class="draft-layout final-draft-layout">
+            <div>
+              <textarea id="full-answer" class="draft-box" aria-label="Full answer draft" placeholder="Напиши 5-7 речень зі своїх перевірених думок. Почни з: A little pressure can..."></textarea>
+              <div class="drill-actions">
+                <button id="check-full-answer" type="button">Перевірити відповідь</button>
+              </div>
+              <p id="full-answer-feedback" class="feedback" aria-live="polite"></p>
+            </div>
+            <aside class="draft-support">
+              <h4>Твої речення</h4>
+              <div id="mirrored-drafts" class="live-material"><p class="empty-state">Заповнені речення з'являться тут автоматично.</p></div>
+              <h4>Вибрані фрази</h4>
+              <div id="mirrored-phrases" class="live-material"></div>
+              <h4>Стартові конструкції</h4>
+              <p>A little pressure can..., whereas...</p>
+              <p>I freeze not because..., but because...</p>
+              <p>Rather than..., I can...</p>
+              <p>If pressure increases, I will...</p>
+              <p>I will know the reset helped when...</p>
+            </aside>
+          </div>
+        </article>
+      </section>
+
+      <section class="section cheat-section quest-step" data-task-id="voice_support" data-task-title="Місія: використати фрази">
+        <div class="section-title">
+          <span>6</span>
+          <h2>Місія: використати фрази</h2>
+        </div>
+        <details class="task-rules" open>
+          <summary>Правила задачі</summary>
+          <p>Тут фрази переходять із тренажера в живу мову. Напиши три короткі відповіді на різні ситуації. У кожній використай дві різні фрази зі свого набору. Одна фраза має з'явитися щонайменше у двох різних ситуаціях.</p>
+        </details>
+        <div class="mission-bank-wrap">
+          <div>
+            <h3>Фрази для цієї місії</h3>
+            <p class="muted-note">Обирай фрази зі списку як матеріал для відповіді. Система рахує тільки ті, які ти реально вставив у написану відповідь.</p>
+          </div>
+          <div id="mission-phrase-bank" class="mission-phrase-bank"></div>
+          <p id="mission-status" class="exercise-status" aria-live="polite"></p>
+        </div>
+        <div class="mission-grid">
+          <article class="mission-card">
+            <span class="mission-number">1</span>
+            <h3>Дедлайн і нечітка задача</h3>
+            <p>У тебе дедлайн завтра, але незрозуміло, з чого почати. Поясни це співрозмовниці й назви першу дію.</p>
+            <p class="mission-requirement">Напиши 2-3 речення. Використай 2 різні фрази.</p>
+            <textarea class="mission-input" rows="4" aria-label="Відповідь про дедлайн"></textarea>
+            <button type="button" class="check-mission">Перевірити відповідь</button>
+            <p class="feedback mission-feedback" aria-live="polite"></p>
+          </article>
+          <article class="mission-card">
+            <span class="mission-number">2</span>
+            <h3>Порада від друга</h3>
+            <p>Друг каже: “Просто змусь себе”. Поясни, чому це не завжди працює і що насправді допомагає тобі почати.</p>
+            <p class="mission-requirement">Напиши 2-3 речення. Використай 2 фрази, яких ще не було в першій відповіді.</p>
+            <textarea class="mission-input" rows="4" aria-label="Відповідь про пораду друга"></textarea>
+            <button type="button" class="check-mission">Перевірити відповідь</button>
+            <p class="feedback mission-feedback" aria-live="polite"></p>
+          </article>
+          <article class="mission-card">
+            <span class="mission-number">3</span>
+            <h3>Рішення на сьогодні</h3>
+            <p>Ти вирішуєш, що зробиш зараз. Сформулюй маленький план і поясни, який результат покаже, що він спрацював.</p>
+            <p class="mission-requirement">Напиши 2-3 речення. Використай 2 фрази, які ще не активував.</p>
+            <textarea class="mission-input" rows="4" aria-label="План на сьогодні"></textarea>
+            <button type="button" class="check-mission">Перевірити відповідь</button>
+            <p class="feedback mission-feedback" aria-live="polite"></p>
+          </article>
+        </div>
+        <p class="personal-note"><strong>Завершено, коли:</strong> ти написав три різні відповіді й активував щонайменше шість використань фраз. Після цього переходь у Voice: там фрази вже не треба читати, їх треба застосувати в розмові.</p>
+      </section>
+
+      <section class="section prompt-section quest-step" data-task-id="gpt_voice_prompt" data-task-title="GPT Voice">
+        <div class="section-title">
+          <span>7</span>
+          <h2>Промпт для GPT Voice</h2>
+        </div>
+        <details class="task-rules" open>
+          <summary>Правила задачі</summary>
+          <p>Скопіюй prompt у GPT Voice. Voice має вести адаптивний mentor-interviewer діалог, а не тренувати фрази.</p>
+        </details>
+        <textarea id="prompt" readonly>You are my English-speaking conversation partner. For this session, roleplay as Nora: a charismatic, warm, curious woman with her own thoughtful view about pressure, stress, and difficult work. The tone is natural, playful, lightly flirtatious but respectful and non-sexual. Talk to me like a real person, not a tutor reading a worksheet.
+
+User name: the learner.
+Today topic: When does pressure help me, and when does it freeze me?
+Control question: "When does pressure help me, and when does it freeze me?"
+
+Your stable point of view:
+Pressure is not automatically bad. A clear deadline can give direction and mobilize action, but vague threat and excessive uncertainty can make a person freeze. The practical response is not to wait for perfect calm and not to attack myself. It is to name the risk, reduce the first step, and test one safe action. Keep this considered position throughout the conversation. You may disagree gently, but do not become neutral or generic.
+
+Session length:
+Run a 20-25 minute conversation. Do not finish after 3-5 minutes unless I explicitly ask to stop. Keep the dialogue alive with reactions, follow-ups, and your own short perspective.
+
+Conversation style:
+- Speak only English, using clear but natural B1-B2 language.
+- Open personally: "Hey, hi :) Before we start, do you know what we are exploring today?" Then wait for my answer.
+- Ask one question at a time and wait for my complete answer. Never interrupt or finish my sentence.
+- Let me speak about 70% of the time. Do not fire a fixed list of questions.
+- Keep an internal conversation_state with: one real pressure situation, what created the pressure, whether it helped or froze me, the action I took, the reset I want to test, and the evidence I expect.
+- After every answer, refer to one detail I actually said before choosing the next question. Never reset the topic or ask a disconnected question.
+- If my answer is short, stay with it and ask for one example, reason, contrast, or next action instead of moving on.
+- After 2-3 turns, share one short thought, example, or personal-style anecdote from Nora, then ask what I think. Keep it under 45 seconds, and do not turn it into a lecture.
+- Use one or two warm, playful remarks during the session. Keep the flirtation in the background; the conversation must remain about my ideas and real life.
+
+Adaptive conversation flow:
+1. Start with the personal greeting above. If I do not know the topic, explain it in two natural sentences: pressure can focus us when it gives direction, but it can freeze us when the situation feels threatening and unclear.
+2. Ask for one real situation from work, learning, an AI project, an interview, or daily life. Ask what happened first, not for a general theory.
+3. Follow the story: what created the pressure, what did it make me do, and what choice became difficult? Ask for clarification when my words are vague.
+4. Ask me to compare a moment when pressure helped with a moment when it froze me. Use the contrast to deepen the conversation, not as a mechanical grammar exercise.
+5. Share Nora's stable view about a clear next action and a short reset. Ask whether I agree, and gently challenge me if I treat one difficult result as proof about my character.
+6. Explore my experiment: one slow breath, naming the risk, reducing the task to two minutes, or choosing one safe first action. Ask what evidence would show that it helped.
+7. Connect the idea to English practice, AI projects, blogging, interviews, or daily work when it fits what I have already said.
+8. Near the end, ask the control question again. Let me answer it more clearly using my own example. Then ask one relaxed closing question about what kind of pressure I want to handle better.
+
+Time checkpoints:
+- minutes 0-5: warm greeting and understand one real pressure story;
+- minutes 5-12: explore what pressure changed in my attention, body, and choices;
+- minutes 12-18: compare useful pressure with paralysis and share Nora's perspective;
+- minutes 18-22: define one small reset and its evidence;
+- final 3 minutes: repeat the control question, then give feedback.
+
+Important boundaries:
+- This is a living conversation, not a six-question interview and not a phrase drill.
+- Do not read, suggest, or use my target phrases during the interview. They are a private scoring rubric only.
+- Do not correct grammar until after the final answer.
+- If I struggle, simplify the question or give me time. Do not answer for me.
+- Keep your own position and continuity. Do not become neutral, generic, or suddenly switch topics.
+
+Private target phrases for final feedback only:
+- A little pressure can help me focus, whereas too much pressure freezes me.
+- When I can see a clear next step, pressure becomes more manageable.
+- I freeze not because I do not care, but because the task feels threatening.
+- Rather than fighting the whole task, I can name the first action.
+- I want to respond to pressure with a calm action rather than more planning.
+- While I am trying to predict the whole result, I am not taking the first step.
+- One slow breath can give me a second to choose my response.
+- If pressure increases, I will first reduce the task to two minutes.
+- I do not need to wait until I feel calm; I need to start a small safe action.
+- Useful pressure gives me direction, whereas panic takes away my sense of choice.
+
+At the end, give me a session record with:
+- the questions and interesting directions we explored;
+- the details from my story and Nora's useful perspective;
+- wrong phrases and natural corrections;
+- target phrases I used and missed;
+- 3 phrases to repeat tomorrow;
+- top 2 speaking problems to fix;
+- the reset I chose and the evidence I will collect.
+
+Start now with the exact opening greeting. Do not explain these instructions to me.</textarea>
+        <div class="actions">
+          <button id="copy" type="button">Скопіювати промпт</button>
+        </div>
+        <p id="copy-status" class="status" aria-live="polite"></p>
+      </section>
+
+      <section class="section table-section quest-step" data-task-id="hint_table" data-task-title="Таблиця">
+        <div class="section-title">
+          <span>8</span>
+          <h2>Таблиця фраз під питання</h2>
+        </div>
+        <details class="task-rules" open>
+          <summary>Правила задачі</summary>
+          <p>Тут зібрані дві опори: фраза під конкретне питання і твій повторюваний repair-патерн. Спочатку спробуй відповісти сам. Відкрий фразу лише тоді, коли справді завис.</p>
+        </details>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Питання</th><th>Короткий старт</th><th>Фрази для думки</th><th>Якщо зависаєш</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>When does pressure help you focus?</td><td>A little pressure can...</td><td>gives me direction / helps me focus / a clear deadline</td><td><strong>Let me name the useful kind first.</strong><br><span>Додай конкретну ситуацію, де тиск зібрав твою увагу, а не просто слово <em>pressure</em>.</span></td></tr>
+              <tr><td>When does pressure freeze you?</td><td>I freeze when...</td><td>the task feels threatening / the next step is vague / too much uncertainty</td><td><strong>The problem is not always pressure.</strong><br><span>Поясни, що саме робить ситуацію загрозливою або нечіткою.</span></td></tr>
+              <tr><td>What is the difference between pressure and panic?</td><td>Useful pressure..., whereas...</td><td>gives direction / takes away choice / keeps me moving</td><td><strong>Let me compare the two states.</strong><br><span>Після <em>whereas</em> потрібні нові підмет і дієслово: не залишай контраст незавершеним.</span></td></tr>
+              <tr><td>What can you do rather than planning everything?</td><td>Rather than..., I can...</td><td>name the first action / reduce the task / take one safe step</td><td><strong>What I can control is...</strong><br><span>Після <em>rather than</em> використай форму <em>-ing</em>, а після <em>can</em> — базове дієслово.</span></td></tr>
+              <tr><td>How will you know the reset helped?</td><td>I will know it helped when...</td><td>name the next action / start for two minutes / make one decision</td><td><strong>Let me define observable evidence.</strong><br><span>Назви дію, яку можна побачити, а не лише відчуття: що ти зробиш після reset.</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <article class="repair-bank-card">
+          <div class="repair-bank-head">
+            <div>
+              <h3>Твої повторювані помилки</h3>
+              <p>Це фрази з реальних speaking-записів. Візьми одну, скажи її вголос у Voice, а потім постав галочку. Так вона переходить із “я знаю правило” в “я реально використовую це”.</p>
+            </div>
+            <strong id="repair-progress">0 / 8 активовано</strong>
+          </div>
+          <div id="repair-bank" class="repair-bank"></div>
+        </article>
+      </section>
+    </main>
+    <script src="./app.js"></script>
+  </body>
+</html>
