@@ -2064,3 +2064,13 @@ textarea {
     grid-template-columns: 1fr;
   }
 }
+
+.demo-nav { display: flex; flex-wrap: wrap; gap: 12px 22px; align-items: center; margin-bottom: 24px; font-size: 13px; }
+.demo-nav a { color: var(--accent); }
+.demo-nav span { margin-right: auto; color: var(--muted); font-size: 11px; font-weight: 800; letter-spacing: .08em; }
+.demo-guide { max-width: 850px; margin-top: 20px; padding: 14px 18px; border: 1px solid var(--line); border-radius: 8px; background: var(--panel); }
+.demo-guide summary { cursor: pointer; font-weight: 700; color: var(--accent); }
+.demo-guide p { font-size: 14px; margin: 12px 0 0; }
+.sample-note { margin: 6px 0 0; color: var(--muted); font-size: 12px; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+@media (max-width: 680px) { .demo-nav { gap: 10px; } .demo-nav span { order: 3; width: 100%; } .quest-nav { flex-wrap: wrap; } }

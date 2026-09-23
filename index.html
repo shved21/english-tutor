@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#101b2d">
+    <meta name="description" content="English Tutor by Vadym Sherstiak: try a guided English lesson, practise writing, and prepare for a separate ChatGPT Voice conversation.">
     <title>English Tutor | 50-Day Start Lab</title>
     <link rel="stylesheet" href="./styles.css">
   </head>
@@ -24,11 +25,12 @@
         <div class="hero-copy">
           <p class="eyebrow">50-DAY WORK MINDSET LAB</p>
           <h1>Build English<br><em>you can use.</em></h1>
-          <p class="hero-text">A finite English challenge about focus, procrastination, work, and becoming more capable in real conversations.</p>
+          <p class="hero-text">Practise English through ideas about work and everyday life. Try one complete lesson with Ukrainian support, then explore the 50-session learning plan.</p>
           <div class="hero-actions">
-            <button class="primary-button" id="continue-button" type="button">Continue mission <span>-></span></button>
-            <a class="text-link" href="./daily_task_app/index.html">Open detailed trainer</a>
+            <a class="primary-button" href="./daily_task_app/index.html">Try the sample lesson <span>→</span></a>
+            <button class="secondary-button" id="continue-button" type="button">Continue mission <span>→</span></button>
           </div>
+          <p class="demo-scope">Public prototype · One complete lesson (Day 14) · No account needed</p>
         </div>
         <div class="hero-orbit" aria-hidden="true">
           <div class="orbit-ring ring-one"></div>
@@ -42,24 +44,25 @@
 
       <section class="progress-strip" aria-label="Challenge progress">
         <div class="progress-main">
-          <div class="progress-heading"><span>YOUR RUN</span><strong id="progress-percent">0%</strong></div>
+          <div class="progress-heading"><span>YOUR CHECKLIST</span><strong id="progress-percent">0%</strong></div>
           <div class="progress-track"><span id="progress-fill"></span></div>
           <div class="progress-meta"><span id="progress-copy">Day 1 is waiting.</span><span id="xp-copy">0 XP</span></div>
         </div>
         <div class="stat-tile"><strong id="completed-count">0</strong><span>days cleared</span></div>
         <div class="stat-tile"><strong id="achievement-count">0</strong><span>achievements</span></div>
-        <div class="stat-tile"><strong>60</strong><span>minute sessions</span></div>
+        <div class="stat-tile"><strong>1</strong><span>complete sample lesson</span></div>
       </section>
 
       <section class="content-grid">
         <div class="roadmap-column">
           <div class="section-heading">
-            <div><p class="eyebrow">THE ROUTE</p><h2>50 days. One evolving skill.</h2></div>
+            <div><p class="eyebrow">THE ROUTE</p><h2>A plan for 50 practice sessions.</h2></div>
             <div class="phase-filter" id="phase-filter" role="tablist" aria-label="Filter phases">
               <button class="filter-button is-active" type="button" data-phase="all">All</button>
               <button class="filter-button" type="button" data-phase="current">Current</button>
             </div>
           </div>
+          <p class="scope-note">This is the learning plan. The available sample is Day 14. Checklist completion and XP are self-reported; they do not measure English ability.</p>
           <div class="roadmap" id="roadmap"></div>
         </div>
 
@@ -86,6 +89,7 @@
           </section>
         </aside>
       </section>
+      <footer class="portfolio-footer"><p>English Tutor · A personal project by Vadym Sherstiak</p><a href="https://github.com/shved21/english-tutor">Source &amp; project story on GitHub ↗</a></footer>
     </main>
 
     <dialog class="mission-dialog" id="mission-dialog" aria-labelledby="mission-title">
@@ -104,7 +108,8 @@
         </div>
 
         <div class="mission-output"><span>Today's control question</span><strong id="dialog-output-question">What exactly happens when I delay?</strong><small id="dialog-output-evidence">Finish with: 60-90 second baseline + 120-word text</small></div>
-        <div class="dialog-actions"><a class="secondary-button" href="./daily_task_app/index.html" target="_blank" rel="noreferrer">Detailed trainer</a><button class="secondary-button" id="previous-day" type="button">Previous day</button><button class="primary-button" id="complete-day" type="button" disabled>Complete day <span>-></span></button></div>
+        <p class="scope-note">Try the available Day 14 sample separately. It does not change this mission’s checklist.</p>
+        <div class="dialog-actions"><a class="secondary-button" href="./daily_task_app/index.html">Try Day 14 sample</a><button class="secondary-button" id="previous-day" type="button">Previous day</button><button class="primary-button" id="complete-day" type="button" disabled>Complete day <span>-></span></button></div>
       </div>
     </dialog>
 

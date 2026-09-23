@@ -1,79 +1,33 @@
-# English Tutor: Case Study
+# English Tutor — project case study
 
-## One-Line Summary
+**Author:** Vadym Sherstiak
+**Type:** Independent personal project; AI-assisted product development
+**[Live demo](https://shved21.github.io/english-tutor/)** · **[Sample lesson](https://shved21.github.io/english-tutor/daily_task_app/index.html)** · **[Source](https://github.com/shved21/english-tutor)**
 
-English Tutor is a small learning product that turns a daily English topic into a measurable path from understanding to usable speech.
+## Problem and motivation
 
-## Context
+I wanted English practice that fits my interests and available time, with a clear next action. My goal is practical B2 communication for interviews, personal projects, and everyday life. I wanted to practise through useful topics such as career decisions and work habits, while producing my own sentences and preparing for conversation.
 
-The learner's main difficulty was not a lack of English content. It was the gap between recognizing a phrase and using it while speaking under pressure.
+## My contribution
 
-Random conversation practice produced repeated grammar errors, weak sentence structure, and little evidence of progress. A useful solution needed to be finite, personalized, interactive, and focused on output.
+I defined the learning goal, topic priorities, practice constraints, and feedback requirements. I used the project personally and requested changes to instructions and lesson flow. GPT/Codex helped author the content, prompts, and application code. This is an example of defining and refining an AI-assisted product; the code alone does not establish independent programming proficiency or commercial engineering experience.
 
-## Product Decision
+## Current product
 
-The system is split into two layers:
+The public prototype has a 50-session roadmap and one detailed Day 14 lesson. The lesson moves through reading, sentence writing, phrase selection and practice, an answer draft, speaking preparation, and a copied prompt for ChatGPT Voice. Instructions are primarily Ukrainian and practice is in English. A short English guide helps a visitor try a writing exercise.
 
-1. A 50-day challenge layer that creates momentum and shows the whole route.
-2. A detailed trainer that turns one daily idea into writing, correction, phrase reuse, and speaking preparation.
+The app is static HTML, CSS, and vanilla JavaScript. Local rules check supported answer patterns. Browser storage holds challenge checklists and lesson drafts. The Voice conversation is started manually in ChatGPT; there is no LLM API, audio capture, or transcript import in the public app.
 
-This separation keeps the overview motivating without making the detailed lesson feel like a long unstructured document.
+## A concrete iteration: making the sample usable from a portfolio link
 
-## Core Learning Loop
+Before the September 2026 portfolio update, the main call to action opened the first roadmap mission, while every trainer link led to Day 14 without clearly explaining the mismatch. The trainer also lost written answers on refresh.
 
-```text
-input -> comprehension -> sentence reconstruction -> feedback -> full answer -> adaptive dialogue -> evidence
-```
+The update added a direct sample-lesson entry, visible lesson coverage, navigation back to the roadmap, and an English first-visit guide. Draft recovery now preserves writing, phrase choices, practice fields, and the current step in this browser. Feedback is deliberately recalculated after reload. A fixed 28% bar in the sample was replaced with a lesson-position label because the number was not learner evidence.
 
-Each step has a job:
+Implementation checks cover malformed or unavailable storage. Typed answers are escaped before appearing in the answer support panel. A browser walkthrough checks refresh recovery, explicit answer feedback, the Voice copy action, and a mobile viewport. These are observed software behaviors, not measured learning gains. The [verification record](verification.md) documents the checks.
 
-- **Input** supplies useful meaning, not isolated vocabulary.
-- **Reconstruction** makes the learner produce the target structure.
-- **Feedback** identifies the most important next correction instead of demanding an exact answer.
-- **Full answer** connects small sentences into a coherent thought.
-- **Adaptive dialogue** tests whether the language survives a real conversation.
-- **Evidence** makes progress visible and informs future repair practice.
+## Scope and trade-offs
 
-## Interaction Design
+A static deployment makes the sample easy to inspect without an account or API key. The trade-off is limited answer checking and a manual handoff to ChatGPT. The route's completion and XP are self-reports. The prototype has not demonstrated external use, learning gains, or a B2 outcome.
 
-The interface uses a quest/deck flow rather than one endless lesson page. One task is active at a time, with a clear next action and a visible finish condition.
-
-Important interaction rules include:
-
-- hints stay hidden until requested;
-- typing does not trigger unwanted correction;
-- feedback appears only after an explicit check;
-- multiple good versions can be accepted;
-- additional practice comes from a finite daily pool;
-- the speaking prompt acts as an interviewer and keeps an adaptive conversation rather than reading a fixed list.
-
-## Technical Implementation
-
-The project is a static HTML, CSS, and JavaScript application. It uses no framework and no backend for the learning prototype.
-
-- `data.js` stores the 50-day route;
-- `app.js` manages challenge state and progression;
-- `daily_task_app/app.js` powers the detailed trainer;
-- browser `localStorage` preserves local progress;
-- `qa_check.mjs` validates key writing and semantic-checker behavior.
-
-The low-dependency approach keeps the prototype easy to run, inspect, and deploy as a static site.
-
-## Why This Is More Than a Flashcard App
-
-The product treats language as a skill performed in context. It does not only ask whether the learner remembers a word. It asks whether the learner can:
-
-- understand an idea;
-- rebuild a sentence;
-- correct a meaningful attempt;
-- connect several sentences;
-- answer follow-up questions;
-- keep speaking when the exact phrase is missing.
-
-## What I Would Build Next
-
-- persistent session records with privacy-safe exports;
-- speech-to-text comparison for recorded answers;
-- stronger spaced review based on actual errors;
-- a recruiter-facing demo mode;
-- analytics that show improvement in clarity, structure, and repair patterns.
+The next product decisions are broader lesson coverage, explicit export of drafts and session evidence, and better treatment of valid answers the rules cannot recognize. An API-connected version would require its own implementation and evaluation.

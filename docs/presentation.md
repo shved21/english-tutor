@@ -1,45 +1,20 @@
-# English Tutor: Short Presentation
+# English Tutor — a 60–90 second walkthrough
 
-## Slide 1 — English You Can Use
+Open the [live demo](https://shved21.github.io/english-tutor/) and use this as speaker notes. Timings are suggested, not measurements.
 
-An interactive 50-day English learning system for practical B2 communication.
+| Time | Show | Say |
+| --- | --- | --- |
+| 0–15 seconds | Main page and sample button | “I started English Tutor because I wanted English practice connected to my interests, with a clear daily task. My goal is practical B2 communication.” |
+| 15–35 seconds | Sample lesson → Next → first writing exercise | “The public version contains a 50-session roadmap and one worked lesson. This exercise gives me a Ukrainian prompt, optional help, and feedback after I check my English answer.” |
+| 35–50 seconds | A neutral answer and its feedback; refresh | “The feedback uses local JavaScript rules. My draft stays in this browser, so I can return after a refresh. The checker has limited coverage.” |
+| 50–65 seconds | Speaking preparation and Voice prompt | “The lesson prepares a conversation. I copy the prompt into ChatGPT Voice separately; the app does not call an AI API or record speech.” |
+| 65–90 seconds | Project story on GitHub | “I defined the requirements and refined the workflow through personal use. GPT/Codex assisted with content, prompts, and implementation. I am continuing to improve the sample based on what actually works.” |
 
-## Slide 2 — The Problem
+## Follow-up questions to prepare for
 
-Knowing English content is not the same as being able to use it in a live conversation. Random speaking practice often repeats the same mistakes without creating a visible learning path.
+- What did you contribute? Explain the requirements, topic choices, feedback rules, and one change you requested and reviewed.
+- How is AI involved? Distinguish AI-assisted development, lesson preparation in chat, and the separate Voice activity from the static app.
+- What is tested? Point to the checker QA, draft tests, and browser verification record.
+- What would you improve? Explain one limitation and a concrete next step. Present it as planned work.
 
-## Slide 3 — The Product
-
-English Tutor connects a finite daily route with a deeper lesson trainer. The learner sees the full journey, completes one focused day, and produces a speaking artifact.
-
-## Slide 4 — The Learning Engine
-
-```text
-read -> understand -> reconstruct -> revise -> answer -> speak -> record evidence
-```
-
-The system teaches language through meaningful ideas about work, focus, procrastination, and personal development.
-
-## Slide 5 — The Interaction Model
-
-- hidden hints instead of leaked answers;
-- iterative feedback instead of a binary correct/incorrect result;
-- multiple acceptable versions instead of exact string matching;
-- adaptive GPT Voice dialogue instead of a fixed questionnaire;
-- finite practice pools instead of endless random exercises.
-
-## Slide 6 — Technical Choices
-
-- vanilla HTML, CSS, and JavaScript;
-- local browser persistence;
-- static deployment;
-- semantic writing checks;
-- no backend and no personal data in the public bundle.
-
-## Slide 7 — Evidence of Work
-
-The product makes progress visible through completed days, XP, achievements, written answers, speaking outputs, and repair phrases that return when they are genuinely useful.
-
-## Slide 8 — Next Step
-
-Turn the prototype into a privacy-safe portfolio demo with richer session evidence, speech analysis, and adaptive spaced review.
+Use your own words. Describe a real session only when you can support it with your own record.

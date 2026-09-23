@@ -27,6 +27,7 @@ const repairBankBox = document.querySelector("#repair-bank");
 const repairProgress = document.querySelector("#repair-progress");
 
 const progressKey = "english-tutor-work-mindset-day-14";
+const escapeHtml = (text) => String(text).replace(/[&<>"']/g, (c) => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 
 const writingPool = [
   {
@@ -1015,7 +1016,7 @@ const updateMirrors = () => {
     .filter(Boolean);
 
   mirroredDrafts.innerHTML = drafts.length
-    ? drafts.slice(-8).map((text) => `<p>${text}</p>`).join("")
+    ? drafts.slice(-8).map((text) => `<p>${escapeHtml(text)}</p>`).join("")
     : `<p class="empty-state">Заповнені речення з'являться тут автоматично.</p>`;
 
   const selected = getSelectedPhrases();
@@ -1071,7 +1072,7 @@ const appendWritingRows = (amount) => {
     `;
     const input = row.querySelector(".writing-input");
     const feedback = row.querySelector(".writing-feedback");
-    const examples = row.querySelector("details");
+    const examples = row.querySelector("details:not(.writing-hint)");
     const runCheck = () => {
       const result = validateSentence(input.value, item);
       feedback.textContent = result.message;
@@ -1578,8 +1579,8 @@ copyButton?.addEventListener("click", async () => {
     copyStatus.textContent = "Промпт скопійовано.";
   } catch {
     promptBox.select();
-    document.execCommand("copy");
-    copyStatus.textContent = "Промпт скопійовано.";
+    const copied = document.execCommand("copy");
+    copyStatus.textContent = copied ? "Промпт скопійовано." : "Скопіюй виділений текст вручну: Ctrl+C або Cmd+C.";
   }
 });
 

@@ -216,3 +216,14 @@ button { cursor: pointer; }
   .dialog-actions { align-items: stretch; flex-direction: column-reverse; }
   .dialog-actions button { width: 100%; }
 }
+
+/* Portfolio entry and keyboard navigation. */
+a.primary-button, a.secondary-button { text-decoration: none; }
+.demo-scope, .scope-note { color: #566576; font-size: 13px; line-height: 1.6; }
+.demo-scope { margin: 18px 0 0; }
+.scope-note { margin: 0 0 18px; }
+.portfolio-footer { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; margin-top: 36px; padding-top: 22px; border-top: 1px solid var(--line); color: #566576; font-size: 13px; }
+.portfolio-footer p { margin: 0; }
+.portfolio-footer a { color: var(--mint-strong); }
+:focus-visible { outline: 3px solid var(--mint-strong); outline-offset: 4px; }
+@media (max-width: 560px) { .save-status { display: block; max-width: 120px; font-size: 10px; } }

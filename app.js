@@ -28,8 +28,13 @@
   }
 
   function saveState() {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
     const status = $("#save-status");
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    } catch {
+      status.textContent = "Storage unavailable · this session only";
+      return;
+    }
     status.textContent = "Saved just now";
     window.clearTimeout(saveState.timer);
     saveState.timer = window.setTimeout(() => { status.textContent = "Saved locally"; }, 1600);
@@ -139,7 +144,7 @@
     $("#dialog-output-evidence").textContent = `Finish with: ${day.evidence}`;
     $("#mission-progress-fill").style.width = `${completedSteps * 25}%`;
     $("#mission-progress-copy").textContent = `${completedSteps} / 4 actions complete`;
-    $("#mission-status").textContent = completedSteps === 4 ? "Ready to clear this day." : "Build the next piece of evidence.";
+    $("#mission-status").textContent = completedSteps === 4 ? "Ready to clear this day." : "Mark only the actions you have completed.";
     $("#dialog-evidence").textContent = day.evidence;
     $$(".mission-step").forEach((step) => {
       const name = step.dataset.step;
