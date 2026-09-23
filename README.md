@@ -1,56 +1,28 @@
 # English Tutor
 
-An interactive English-learning system built around a practical goal: move from B1-ish spoken English to confident B2 communication for real conversations and AI/IT interviews.
+English Tutor is a personal project for practising English that I can use in IT interviews, personal projects, and everyday conversations. My goal is practical B2 communication; the project does not demonstrate that I have reached B2.
 
-The project is designed as a finite product, not an endless collection of lessons. It combines a 50-day learning route with a deeper writing and speaking trainer.
+## Why I built it
 
-## The Problem
+I wanted practice connected to subjects I already care about: work, career decisions, personal development, and everyday challenges. A focused daily task is easier for me to return to than an open-ended study plan. The intended routine has a manageable minimum and leaves room for a longer conversation when I have the time and energy. I refine the flow through personal use and feedback.
 
-Traditional language study often creates a large amount of passive knowledge but very little usable speech. This project addresses that gap with a loop that connects:
+## How to use this version
 
-- meaningful input;
-- controlled sentence writing;
-- reusable language constructions;
-- adaptive speaking practice;
-- evidence of completed work.
+The public repository contains two linked interfaces. The [challenge page](index.html) shows a 50-session Work Mindset route. Choose a mission, follow its four actions, and mark them done yourself. The [detailed trainer](daily_task_app/index.html) is a **single worked lesson for Day 14**, about useful pressure and freezing under stress. Challenge missions all link to this same lesson; the repository does not contain 50 detailed lessons.
 
-## What It Includes
+In that lesson, read the English text and reveal the Ukrainian translation if needed. Write sentences from guided Ukrainian prompts, check them, choose and practise phrases, then build a longer answer. The page provides a prompt to copy into a **separate ChatGPT Voice conversation**. Speaking, any transcript, and the final reflection happen outside the app; the page neither starts Voice nor imports its results.
 
-### 50-Day Start Lab
+In my personal workflow, I also use GPT/Codex in chat to help prepare and revise learning material. This public bundle is a static snapshot of the interface and lesson. Its JavaScript does not call an LLM API or generate a new lesson on its own.
 
-The main interface is a progression-based challenge about focus, procrastination, work habits, and becoming more capable in real conversations.
+## What is implemented
 
-- 50 connected days across 10 phases;
-- one clear topic and finish condition per day;
-- English learning content with Ukrainian support where comprehension needs it;
-- progress, XP, achievements, and locked future days;
-- local browser persistence with `localStorage`.
+- The challenge shows all 50 topics across 10 phases, locks later missions until earlier ones are marked complete, and stores the user's checked steps, XP, and achievements in browser `localStorage`. These are self-reported interface indicators, not measured English ability.
+- The Day 14 trainer has eight guided screens: context and reading, sentence reconstruction, phrase selection, phrase practice, answer building, speaking preparation, a copyable Voice prompt, and a final phrase reference. It offers hidden hints and finite additional writing practice.
+- Local JavaScript checks known sentence patterns and some meaning-preserving alternatives when the learner presses a check button. It provides feedback for the supported exercises; it cannot judge every valid answer or assess live speech.
+- The trainer includes a repair phrase list with checkboxes. Only those checkbox selections persist in its browser storage; written drafts and Voice records are not saved by this public version.
+- [`daily_task_app/qa_check.mjs`](daily_task_app/qa_check.mjs) checks parts of the sample lesson, including the finite writing pool and accepted examples. It is a code check, not evidence of learning outcomes.
 
-### Detailed English Trainer
-
-The deeper trainer turns one daily topic into a complete lesson:
-
-- an informative English input text;
-- a full Ukrainian translation for comprehension checking;
-- sentence-by-sentence breakdown;
-- controlled Ukrainian-to-English reconstruction;
-- hidden hints and iterative feedback;
-- a finite phrase trainer with additional practice rows;
-- a supported full-answer draft;
-- a conversational GPT Voice prompt;
-- evidence and repair phrases based on previous speaking mistakes.
-
-## Learning Design
-
-The product follows a simple progression:
-
-```text
-understand -> notice -> write -> revise -> speak -> reflect
-```
-
-The goal is not to produce a perfect model answer. The goal is to help the learner build several valid ways to express the same idea and then use those constructions in a live conversation.
-
-## Product Flow
+## Product flow
 
 ![The 50-day route](docs/screenshots/01-route.png)
 
@@ -58,20 +30,15 @@ The goal is not to produce a perfect model answer. The goal is to help the learn
 
 ![The detailed writing and speaking trainer](docs/screenshots/03-trainer.png)
 
-## Technical Structure
+## Technical structure and local run
 
 ```text
-index.html                 50-day challenge interface
-app.js                     challenge state and progression logic
-data.js                    finite 50-day content route
-styles.css                 challenge UI
-daily_task_app/             detailed lesson and writing trainer
-docs/                       portfolio material and screenshots
+index.html + app.js + data.js    Challenge route and browser state
+daily_task_app/                 Day 14 lesson, prompts, and local checks
+docs/                           Portfolio notes and screenshots
 ```
 
-The project is intentionally dependency-light. It runs as a static web application and stores progress locally in the browser. No learner journal, chat history, API key, or private profile data is included in this repository.
-
-## Run Locally
+The static pages use HTML, CSS, and vanilla JavaScript. They need no framework, backend, account, or API key to run. Python 3 is used below only to serve the files locally. The optional ChatGPT Voice conversation takes place in ChatGPT.
 
 From the repository root:
 
@@ -84,15 +51,12 @@ Open:
 - `http://127.0.0.1:8766/index.html` for the 50-day challenge;
 - `http://127.0.0.1:8766/daily_task_app/index.html` for the detailed trainer.
 
-## Portfolio Material
+## My contribution and AI assistance
 
-- [Case study](docs/case-study.md)
-- [Short presentation](docs/presentation.md)
+I set the learning goal, topic priorities, practice constraints, and the kind of feedback I wanted. I have iterated on the instructions and product flow while using the project. GPT/Codex has assisted with lesson content, prompts, and software implementation. This repository shows the resulting prototype, not that I independently wrote every JavaScript component. The [case study](docs/case-study.md) and [short presentation](docs/presentation.md) give more design context.
 
-## Status
+## Current limits and next improvements
 
-This is a working personal learning product and a portfolio project. The core route, interactive challenge, writing trainer, feedback model, and speaking workflow are implemented. The next product layer is stronger session evidence and more adaptive content generation.
+This is a personal prototype, with no demonstrated external use or measured learning gains. The public trainer covers one detailed lesson; the 50-session route is a plan and navigation layer. Challenge completion is self-reported, and the rule-based checker has limited coverage. The next useful steps are to connect more detailed lessons to the route, preserve session evidence with appropriate privacy controls, and use observed mistakes to improve review. Those capabilities are not implemented in this public version.
 
-## Privacy
-
-The repository contains anonymized product content only. Personal notes, journals, chat transcripts, local progress, and private English Tutor project instructions stay outside the public project bundle.
+The project does not replace a teacher or verify a CEFR level. B2 remains my learning goal.
