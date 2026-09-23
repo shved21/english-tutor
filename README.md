@@ -1,62 +1,101 @@
 # English Tutor
 
-English Tutor is a personal project for practising English that I can use in IT interviews, personal projects, and everyday conversations. My goal is practical B2 communication; the project does not demonstrate that I have reached B2.
+English Tutor is a personal prototype for structured English practice around career decisions, personal development, and everyday challenges. I built it to make each session clear and relevant: know what to do next, practise useful language, and prepare for a conversation.
+
+The current version combines a **50-session learning roadmap with one fully worked lesson**. The lesson guides the learner through reading, writing, phrase practice, and preparation for a separate ChatGPT Voice conversation.
+
+My learning goal is practical B2 communication for IT interviews, personal projects, and everyday life.
 
 ## Why I built it
 
-I wanted practice connected to subjects I already care about: work, career decisions, personal development, and everyday challenges. A focused daily task is easier for me to return to than an open-ended study plan. The intended routine has a manageable minimum and leaves room for a longer conversation when I have the time and energy. I refine the flow through personal use and feedback.
+I wanted an English-learning routine that fits my interests, goals, and available time. Practising with topics I already care about makes the language useful during the session itself: I can explore a career decision or personal challenge while working on how to express it in English.
 
-## How to use this version
+The intended experience has a manageable daily minimum and room for more practice when I have the time and energy. I use the project personally and continue to refine its instructions and learning flow based on that experience.
 
-The public repository contains two linked interfaces. The [challenge page](index.html) shows a 50-session Work Mindset route. Choose a mission, follow its four actions, and mark them done yourself. The [detailed trainer](daily_task_app/index.html) is a **single worked lesson for Day 14**, about useful pressure and freezing under stress. Challenge missions all link to this same lesson; the repository does not contain 50 detailed lessons.
+## Explore the prototype
 
-In that lesson, read the English text and reveal the Ukrainian translation if needed. Write sentences from guided Ukrainian prompts, check them, choose and practise phrases, then build a longer answer. The page provides a prompt to copy into a **separate ChatGPT Voice conversation**. Speaking, any transcript, and the final reflection happen outside the app; the page neither starts Voice nor imports its results.
+After starting the project locally using the instructions below:
 
-In my personal workflow, I also use GPT/Codex in chat to help prepare and revise learning material. This public bundle is a static snapshot of the interface and lesson. Its JavaScript does not call an LLM API or generate a new lesson on its own.
+1. Open the [detailed trainer](daily_task_app/index.html) to try the worked lesson for **Day 14: useful pressure and freezing under stress**.
+2. Read the English text, reveal the Ukrainian translation if needed, and complete a guided writing exercise.
+3. Check your answer, practise selected phrases, and build a longer response.
+4. Copy the provided prompt into a separate ChatGPT Voice conversation for speaking practice.
+
+To explore the broader learning plan, open the [challenge page](index.html). It contains 50 missions across 10 phases. Each mission has four actions to mark complete manually; later missions unlock as earlier ones are completed. All mission links currently lead to the same Day 14 lesson.
 
 ## What is implemented
 
-- The challenge shows all 50 topics across 10 phases, locks later missions until earlier ones are marked complete, and stores the user's checked steps, XP, and achievements in browser `localStorage`. These are self-reported interface indicators, not measured English ability.
-- The Day 14 trainer has eight guided screens: context and reading, sentence reconstruction, phrase selection, phrase practice, answer building, speaking preparation, a copyable Voice prompt, and a final phrase reference. It offers hidden hints and finite additional writing practice.
-- Local JavaScript checks known sentence patterns and some meaning-preserving alternatives when the learner presses a check button. It provides feedback for the supported exercises; it cannot judge every valid answer or assess live speech.
-- The trainer includes a repair phrase list with checkboxes. Only those checkbox selections persist in its browser storage; written drafts and Voice records are not saved by this public version.
-- [`daily_task_app/qa_check.mjs`](daily_task_app/qa_check.mjs) checks parts of the sample lesson, including the finite writing pool and accepted examples. It is a code check, not evidence of learning outcomes.
+| Component | Current functionality |
+| --- | --- |
+| Learning roadmap | 50 Work Mindset topics across 10 phases, sequential mission unlocking, and manually checked actions. |
+| Challenge progress | Completed actions, XP, and achievements stored in the browser using `localStorage`. |
+| Detailed lesson | Eight guided screens covering reading, sentence reconstruction, phrase selection and practice, answer building, speaking preparation, a Voice prompt, and a final phrase reference. |
+| Writing feedback | Local JavaScript checks supported sentence patterns and selected meaning-preserving alternatives when the learner checks an answer. |
+| Practice support | Hidden hints, a fixed pool of additional writing exercises, and a repair phrase checklist. |
+| Speaking handoff | A copyable prompt for continuing practice in ChatGPT Voice. |
 
-## Product flow
+## Screenshots
 
-![The 50-day route](docs/screenshots/01-route.png)
+The roadmap organizes the planned sessions into a visible learning route.
 
-![A daily mission](docs/screenshots/02-mission.png)
+![The 50-session learning roadmap](docs/screenshots/01-route.png)
+
+Each mission presents a small set of actions to complete.
+
+![A daily mission and its actions](docs/screenshots/02-mission.png)
+
+The detailed trainer supports writing practice and preparation for speaking.
 
 ![The detailed writing and speaking trainer](docs/screenshots/03-trainer.png)
 
-## Technical structure and local run
+## Technical structure
 
-```text
-index.html + app.js + data.js    Challenge route and browser state
-daily_task_app/                 Day 14 lesson, prompts, and local checks
-docs/                           Portfolio notes and screenshots
-```
+The public app uses **HTML, CSS, and vanilla JavaScript**. It runs as static pages without a framework, backend, account, or API key. Python is used only for the optional local server described below.
 
-The static pages use HTML, CSS, and vanilla JavaScript. They need no framework, backend, account, or API key to run. Python 3 is used below only to serve the files locally. The optional ChatGPT Voice conversation takes place in ChatGPT.
+| Path | Purpose |
+| --- | --- |
+| `index.html`, `app.js`, `data.js` | Challenge interface, roadmap data, and browser state. |
+| `daily_task_app/` | Day 14 lesson, prompts, and local answer checks. |
+| `docs/` | Portfolio notes and screenshots. |
 
-From the repository root:
+The app does not call an LLM API or generate lessons automatically. In my personal workflow, I use GPT/Codex separately to help prepare and revise learning materials. Speaking, any transcript, and the final reflection take place in ChatGPT; the app does not launch Voice or import its results.
+
+The lesson also includes a [QA script](daily_task_app/qa_check.mjs) that checks parts of the sample content, including the additional writing pool and accepted answer examples.
+
+## Run locally
+
+With Python 3 installed, run this command from the repository root:
 
 ```bash
 python3 -m http.server 8766
 ```
 
-Open:
+Then open:
 
-- `http://127.0.0.1:8766/index.html` for the 50-day challenge;
-- `http://127.0.0.1:8766/daily_task_app/index.html` for the detailed trainer.
+- [Challenge roadmap](http://127.0.0.1:8766/index.html)
+- [Day 14 detailed trainer](http://127.0.0.1:8766/daily_task_app/index.html)
 
-## My contribution and AI assistance
+The optional speaking activity requires a separate ChatGPT conversation with Voice available.
 
-I set the learning goal, topic priorities, practice constraints, and the kind of feedback I wanted. I have iterated on the instructions and product flow while using the project. GPT/Codex has assisted with lesson content, prompts, and software implementation. This repository shows the resulting prototype, not that I independently wrote every JavaScript component. The [case study](docs/case-study.md) and [short presentation](docs/presentation.md) give more design context.
+## My contribution and AI-assisted development
 
-## Current limits and next improvements
+My contribution has focused on defining the learning problem, setting requirements, and refining the learning experience through personal use.
 
-This is a personal prototype, with no demonstrated external use or measured learning gains. The public trainer covers one detailed lesson; the 50-session route is a plan and navigation layer. Challenge completion is self-reported, and the rule-based checker has limited coverage. The next useful steps are to connect more detailed lessons to the route, preserve session evidence with appropriate privacy controls, and use observed mistakes to improve review. Those capabilities are not implemented in this public version.
+I chose the topic priorities, defined the practice constraints and desired feedback, and iterated on the instructions and session flow. GPT/Codex assisted with lesson content, prompts, and software implementation.
 
-The project does not replace a teacher or verify a CEFR level. B2 remains my learning goal.
+The project documents my work on product requirements, learning workflows, and the review of AI-assisted outputs. Further design context is available in the [case study](docs/case-study.md) and [short presentation](docs/presentation.md).
+
+## Current limitations
+
+- **Lesson coverage:** the roadmap contains 50 planned sessions, while the detailed trainer implements one lesson.
+- **Feedback coverage:** the rule-based checker supports a limited set of answers. It cannot assess every valid sentence or live speech.
+- **Saved data:** the challenge saves progress locally in the browser. The trainer saves only the repair checklist selections; written drafts and Voice records are not saved by this version.
+- **Evidence of progress:** completion, XP, and achievements reflect self-reported activity. The project has no demonstrated external use or measured learning gains; B2 remains a learning goal.
+
+## Next improvements
+
+1. Add more detailed lessons and connect them to the corresponding roadmap missions.
+2. Preserve written work and session evidence with clear privacy controls.
+3. Use observed mistakes to improve review and exercise coverage.
+
+These are planned improvements, not current features.
