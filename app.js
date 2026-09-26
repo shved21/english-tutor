@@ -1,230 +1,247 @@
-(function () {
-  "use strict";
+const dayZero = {
+  day: 0,
+  topic: 'Kickoff and first speaking practice',
+  question: 'What helps me start speaking English?',
+  focus: 'First speaking attempt and setup',
+  artifact: 'Start the learning environment and try a short conversation',
+  evidence: 'A first speaking note and a clear next step'
+};
 
-  const STORAGE_KEY = "english-tutor-start-lab-v1";
-  const STEP_NAMES = ["understand", "build", "speak", "prove"];
-  const state = loadState();
-  let activeDay = nextIncompleteDay();
-  let activeFilter = "all";
+const topicUk = [
+  'Старт і перша розмовна практика',
+  'Прокрастинація — це система, а не риса характеру',
+  'Види відкладання',
+  'Справжня ціна відкладання',
+  'Уникання і уявлення про себе',
+  'Підсумок діагностики',
+  'Цінності важливіші за настрій',
+  'Відповідальність без самопокарання',
+  'Майбутній я як реальна людина',
+  'Маленькі обіцянки',
+  'Підсумок домовленості про дії',
+  'Стан тіла і робота',
+  'Сон, світло і рух',
+  'Дофамін і швидкі винагороди',
+  'Стрес: допомагає чи паралізує',
+  'Підсумок протоколу енергії',
+  'Автоматичні думки',
+  'Думка — не факт',
+  'Перфекціонізм як приховане уникання',
+  'Дія попри дискомфорт',
+  'Підсумок теми уникання',
+  'Мотивація — ненадійний початок',
+  'Плани у форматі «якщо — то»',
+  'Наступна фізична дія',
+  'Вхід у задачу за дві хвилини',
+  'Підсумок сценаріїв старту',
+  'Як зменшити тертя',
+  'Залишкова увага після перемикання',
+  'Цифровий шум',
+  'Як увійти у фокус',
+  'Підсумок: захист протоколу уваги',
+  'Результат проти видимості роботи',
+  'Конкретні результати',
+  'Планування без надмірного планування',
+  'Зворотний зв’язок через дію',
+  'Оновлення статусу на роботі',
+  'Що робити після пропущеного дня',
+  'Сором і повернення до роботи',
+  'Відпочинок чи уникання',
+  'Як відновити довіру до себе',
+  'Підсумок теми відновлення',
+  'Особиста система роботи',
+  'Пріоритети й компроміси',
+  'Показники без зайвого тиску',
+  'Як пояснити свою систему на роботі',
+  'Підсумок особистої системи',
+  'Складні дні',
+  'Ідентичність і амбіції',
+  'Інструкція для себе',
+  'План після завершення курсу',
+  'Фінальний захист'
+];
 
-  const $ = (selector) => document.querySelector(selector);
-  const $$ = (selector) => Array.from(document.querySelectorAll(selector));
+const questionUk = [
+  'Що допомагає мені почати говорити англійською?',
+  'Що саме відбувається, коли я відкладаю справу?',
+  'Який тип відкладання я використовую найчастіше?',
+  'Чого мені коштує прокрастинація?',
+  'Що ця задача може відкрити про мене?',
+  'Чому я відкладаю справи?',
+  'Що варто робити, навіть коли я не почуваюся готовим?',
+  'На що я справді можу вплинути?',
+  'Що моє майбутнє «я» порадило б почати зараз?',
+  'Яку маленьку обіцянку я зможу виконати навіть під стресом?',
+  'Чому варто завершити цей курс?',
+  'Який мінімальний стан потрібен мені для корисної роботи?',
+  'Що з фізичних чинників найкраще допомагає мені почати?',
+  'Яка швидка винагорода відволікає мене від роботи?',
+  'Коли тиск допомагає, а коли заважає?',
+  'Як я готую тіло й розум до роботи?',
+  'Які думки запускають уникання?',
+  'Які факти підтримують або спростовують цю думку?',
+  'Коли я ховаюся за високими стандартами якості?',
+  'На основі якої цінності я можу діяти попри дискомфорт?',
+  'Чого я насправді уникаю?',
+  'Чому не варто чекати мотивації?',
+  'Що я зроблю, якщо з’явиться опір?',
+  'Якою є наступна фізична дія в цій задачі?',
+  'Як зробити початок достатньо малим?',
+  'Як почати, перш ніж з’явиться відчуття готовності?',
+  'Як зробити правильну дію простішою?',
+  'Чому перемикання між задачами дорого коштує?',
+  'Який цифровий канал найбільше забирає увагу?',
+  'Який мій особистий спосіб входу у фокус?',
+  'Чи можу я захистити свій протокол уваги під тиском?',
+  'Що виглядає продуктивним, але не дає результату?',
+  'Який видимий результат має дати ця задача?',
+  'Коли планування стає униканням?',
+  'Який зворотний зв’язок я отримаю через дію?',
+  'Що я зробив, що завадило і що робитиму далі?',
+  'Як я повернуся після пропуску без зайвої драми?',
+  'Як полагодити систему без нападок на себе?',
+  'Як зрозуміти, що мені потрібен відпочинок, а не втеча?',
+  'Як відновити довіру маленькими підтвердженими кроками?',
+  'Як відновлюватися і продовжувати працювати?',
+  'Як працює моя система від ідеї до результату?',
+  'Від чого мені варто відмовитися зараз?',
+  'Як вимірювати поступ без зайвого тиску?',
+  'Як я поясню свою робочу систему на співбесіді?',
+  'Яка моя особиста система роботи?',
+  'Як працювати, коли умови складні?',
+  'Якою людиною я поступово стаю?',
+  'Що я порадив би собі перед складною роботою?',
+  'Як підтримувати систему ще 30 днів?',
+  'Як починати складні справи за низької мотивації?'
+];
 
-  function loadState() {
-    const fallback = { completed: [], xp: 0, steps: {} };
-    try {
-      const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "null");
-      if (!saved || typeof saved !== "object") return fallback;
-      return {
-        completed: Array.isArray(saved.completed)
-          ? saved.completed.filter((day) => Number.isInteger(day) && day >= 1 && day <= challengeDays.length)
-          : [],
-        xp: Number.isFinite(saved.xp) ? saved.xp : 0,
-        steps: saved.steps && typeof saved.steps === "object" ? saved.steps : {},
-      };
-    } catch (error) {
-      return fallback;
-    }
+// Published detail translations exist for every day that can currently be opened.
+const detailsUk = [
+  ['Перша розмова й налаштування', 'Підготувати середовище для навчання та спробувати коротку розмову', 'Нотатка про першу розмову й наступний крок'],
+  ['Я схильний… коли…', 'Почати карту причин прокрастинації', 'Початкова розповідь на 60–90 секунд і текст на 120 слів'],
+  ['Це здається…, але насправді…', 'Розподілити три відкладені задачі за типами', 'Три чіткі категорії відкладання'],
+  ['Речення про причину й наслідок', 'Чесно описати ціну однієї відкладеної задачі', 'Абзац про наслідки'],
+  ['Можливо, я уникаю… тому що…', 'Зіставити одну задачу зі страхом, статусом або невизначеністю', 'Особиста карта уникання'],
+  ['Структура історії та логічні зв’язки', 'Завершити першу версію карти причин', 'Розповідь на 90 секунд і текст на 120 слів'],
+  ['Навіть коли…, я все одно можу…', 'Назвати п’ять цінностей, які мають скеровувати дії', 'Коротка розповідь про цінності'],
+  ['Можу, не можу, варто, не зобов’язаний', 'Обрати одну зону роботи, на яку справді можна вплинути', 'Реалістичне формулювання відповідальності'],
+  ['Майбутні форми й пояснення причин', 'Написати короткий лист від себе через рік', 'Голосова нотатка від майбутнього себе'],
+  ['Я можу взяти на себе зобов’язання…', 'Створити одну щоденну обіцянку на десять хвилин', 'Обіцянка, яку реально виконати'],
+  ['Причини, приклади й результати', 'Завершити особисту домовленість про дії', 'Двохвилинна розповідь і текст на 150 слів'],
+  ['Я працюю краще, коли…', 'Створити базовий перелік умов для енергії', 'Пояснення корисного стану'],
+  ['Порівняльні конструкції', 'Перевірити одну дію перед початком роботи', 'Порівняння й один експеримент'],
+  ['Мене тягне до… тому що…', 'Проаналізувати три цикли швидкої винагороди', 'Пояснення відволікання'],
+  ['Тоді як; у той час як; замість того щоб', 'Створити спосіб відновитися перед складною роботою', 'Порівняння двох станів і спосіб відновлення'],
+  ['Переказ тексту й пояснення протоколу', 'Завершити протокол енергії', 'Двохвилинне пояснення протоколу'],
+  ['Я кажу собі, що…', 'Зібрати десять думок, які запускають уникання', 'Огляд повторюваних думок'],
+  ['Фрази для порівняння і наведення доказів', 'Заповнити таблицю: думка, докази, альтернатива', 'Відповідь із опорою на докази'],
+  ['Достатньо добре, щоб…', 'Визначити прийнятну версію однієї задачі', 'Рішення про достатню якість'],
+  ['Я можу відчувати… і все одно…', 'Попрацювати 10–25 хвилин попри дискомфорт', 'Історія про дію з дискомфортом'],
+  ['Історія, порівняння та пояснення', 'Завершити карту уникання', 'Трихвилинна розповідь і карта'],
+  ['Раніше я думав…, але тепер…', 'Назвати дії, які можна почати без мотивації', 'Відповідь про старе й нове переконання'],
+  ['Якщо…, то я…', 'Написати десять сценаріїв початку за опору', 'Бібліотека сценаріїв старту'],
+  ['Інфінітив для вираження мети', 'Переписати п’ять нечітких задач як фізичні дії', 'Список конкретних дій'],
+  ['Замість…, я можу…', 'Спробувати початок тривалістю дві хвилини', 'Пояснення змін до й після'],
+  ['Структура «проблема — рішення»', 'Завершити бібліотеку сценаріїв «якщо — то»', 'Трихвилинна відповідь про проблему й рішення'],
+  ['Я можу зменшити тертя, якщо…', 'Прибрати три перепони для роботи', 'Огляд робочих перешкод'],
+  ['Причина, наслідок і приклади', 'Провести один робочий блок без перемикання', 'Експеримент із фокусом'],
+  ['Я втрачаю фокус, коли…', 'Прибрати або заблокувати один цифровий канал', 'Пояснення цифрової межі'],
+  ['Спершу…, потім…, після цього…', 'Створити ритуал початку на три–п’ять хвилин', 'Пояснення послідовності'],
+  ['Захист позиції, визнання слабкого місця й опис перевірки', 'Підготувати короткий захист протоколу уваги', 'Відповідь у форматі дебатів і реальна п’ятихвилинна перевірка']
+];
+
+challengeDays[29] = {
+  ...challengeDays[29],
+  topic: 'Debating My Attention Protocol',
+  question: 'Can I defend my attention protocol under pressure?',
+  focus: 'Defend a position, admit a weak point, and describe a test',
+  artifact: 'Prepare a short defense of the attention protocol',
+  evidence: 'A debated answer and a real five-minute focus test'
+};
+
+const today = publicProgress.currentDay;
+const allDays = [dayZero, ...challengeDays];
+const list = document.getElementById('day-list');
+const dialog = document.getElementById('day-dialog');
+const closeButton = document.getElementById('close-dialog');
+let lastTrigger = null;
+
+function node(tag, className, value) {
+  const item = document.createElement(tag);
+  if (className) item.className = className;
+  if (value !== undefined) item.textContent = value;
+  return item;
+}
+function ratingFor(day) {
+  const value = publicProgress.ratings[day];
+  return typeof value === 'string' && value.trim() ? value : 'Немає запису';
+}
+function stateFor(day) {
+  if (day > today) return 'locked';
+  if (day === today) return 'current';
+  return 'available';
+}
+function stateText(state) {
+  return {locked:'Закрито', current:'Поточний', available:'Опис доступний'}[state];
+}
+function render() {
+  const fragment = document.createDocumentFragment();
+  for (const lesson of allDays) {
+    const state = stateFor(lesson.day);
+    const row = node('button', `day-row is-${state}`);
+    row.type = 'button';
+    row.dataset.day = String(lesson.day);
+    row.disabled = state === 'locked';
+    row.setAttribute('aria-label', `День ${lesson.day}. ${lesson.topic}. ${topicUk[lesson.day]}. ${stateText(state)}. Оцінка: ${ratingFor(lesson.day)}`);
+    const index = node('span','day-index','ДЕНЬ');
+    index.append(node('strong','',String(lesson.day).padStart(2,'0')));
+    const title = node('span','day-title');
+    title.append(node('strong','',lesson.topic),node('small','',topicUk[lesson.day]));
+    const grade = node('span','day-grade','ОЦІНКА');
+    grade.append(node('strong','',ratingFor(lesson.day)));
+    row.append(index,title,grade,node('span','day-state',stateText(state)),node('span','day-arrow',state === 'locked' ? '🔒' : '↗'));
+    fragment.append(row);
   }
-
-  function saveState() {
-    const status = $("#save-status");
-    try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-    } catch {
-      status.textContent = "Storage unavailable · this session only";
-      return;
-    }
-    status.textContent = "Saved just now";
-    window.clearTimeout(saveState.timer);
-    saveState.timer = window.setTimeout(() => { status.textContent = "Saved locally"; }, 1600);
+  list.append(fragment);
+}
+function setText(id, value) { document.getElementById(id).textContent = value; }
+function openDay(day, trigger) {
+  const lesson = allDays[day];
+  if (!lesson || day > today) return;
+  lastTrigger = trigger || null;
+  setText('detail-day', `ДЕНЬ ${String(day).padStart(2,'0')} · ПЛАН УРОКУ`);
+  setText('detail-title', lesson.topic);
+  setText('detail-translation', topicUk[day]);
+  setText('detail-status', `${stateText(stateFor(day))} · Оцінка: ${ratingFor(day)}`);
+  setText('detail-question', `${lesson.question}\n${questionUk[day]}`);
+  setText('detail-focus', `${lesson.focus}\n${detailsUk[day][0]}`);
+  setText('detail-artifact', `${lesson.artifact}\n${detailsUk[day][1]}`);
+  setText('detail-evidence', `${lesson.evidence}\n${detailsUk[day][2]}`);
+  setText('detail-note', day === 14
+    ? 'Для дня 14 опубліковано повний інтерактивний урок. Його відкриття не зараховує проходження.'
+    : day === 0
+      ? 'Це стартова сесія. Її опис відокремлено від 50 тематичних уроків.'
+      : 'Тут показано опис із програми. Повний інтерактивний урок для цього дня ще не опубліковано. Позиція в плані не означає, що день пройдено.');
+  const actions = document.getElementById('dialog-actions');
+  actions.replaceChildren();
+  if (day === 14) {
+    const link = node('a','', 'Відкрити повний урок ↗');
+    link.href = './daily_task_app/index.html';
+    actions.append(link);
   }
+  const close = node('button','', 'Закрити');
+  close.type = 'button';
+  close.addEventListener('click', () => dialog.close());
+  actions.append(close);
+  dialog.showModal();
+}
 
-  function getDay(dayNumber) {
-    return challengeDays.find((item) => item.day === dayNumber) || challengeDays[0];
-  }
-
-  function phaseFor(dayNumber) {
-    return challengePhases.find((phase) => dayNumber >= phase.range[0] && dayNumber <= phase.range[1]) || challengePhases[0];
-  }
-
-  function nextIncompleteDay() {
-    return challengeDays.find((item) => !state.completed.includes(item.day))?.day || challengeDays.length;
-  }
-
-  function isComplete(dayNumber) {
-    return state.completed.includes(dayNumber);
-  }
-
-  function isUnlocked(dayNumber) {
-    return dayNumber === 1 || isComplete(dayNumber - 1);
-  }
-
-  function stepKey(dayNumber, stepName) {
-    return `${dayNumber}-${stepName}`;
-  }
-
-  function stepDone(dayNumber, stepName) {
-    return state.steps[stepKey(dayNumber, stepName)] === true;
-  }
-
-  function allStepsDone(dayNumber) {
-    return STEP_NAMES.every((stepName) => stepDone(dayNumber, stepName));
-  }
-
-  function escapeHtml(value) {
-    return String(value).replace(/[&<>'"]/g, (character) => ({
-      "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;",
-    }[character]));
-  }
-
-  function renderRoadmap() {
-    const roadmap = $("#roadmap");
-    const currentPhaseName = phaseFor(nextIncompleteDay()).name;
-    roadmap.innerHTML = challengePhases.map((phase) => {
-      const visible = activeFilter === "all" || phase.name === currentPhaseName;
-      const days = challengeDays.filter((item) => item.day >= phase.range[0] && item.day <= phase.range[1]);
-      return `<section class="phase-row ${visible ? "" : "is-hidden"}" style="--phase-color: var(--${phase.color})">
-        <div class="phase-head"><div class="phase-title"><span class="phase-swatch"></span><strong>${escapeHtml(phase.name)}</strong></div><small>Days ${phase.range[0]}-${phase.range[1]}</small></div>
-        <div class="day-row">${days.map((item) => {
-          const completed = isComplete(item.day);
-          const locked = !isUnlocked(item.day) && !completed;
-          const current = item.day === nextIncompleteDay();
-          return `<button class="day-button ${completed ? "is-complete" : ""} ${current ? "is-current" : ""} ${locked ? "is-locked" : ""}" type="button" data-day="${item.day}" ${locked ? "disabled" : ""}>
-            <span class="day-number">DAY ${String(item.day).padStart(2, "0")}</span><span class="day-topic">${escapeHtml(item.topic)}</span>${completed ? '<span class="day-check">CLEARED</span>' : current ? '<span class="day-check">NEXT</span>' : ""}
-          </button>`;
-        }).join("")}</div>
-      </section>`;
-    }).join("");
-    $$(".day-button").forEach((button) => button.addEventListener("click", () => openMission(Number(button.dataset.day))));
-  }
-
-  function renderProgress() {
-    const completedCount = state.completed.length;
-    const percent = Math.round((completedCount / challengeDays.length) * 100);
-    const unlockedCount = challengeAchievements.filter((achievement) => achievement.test(state)).length;
-    $("#progress-percent").textContent = `${percent}%`;
-    $("#progress-fill").style.width = `${percent}%`;
-    $("#completed-count").textContent = completedCount;
-    $("#achievement-count").textContent = unlockedCount;
-    $("#achievement-summary").textContent = `${unlockedCount} / ${challengeAchievements.length}`;
-    $("#xp-copy").textContent = `${state.xp} XP`;
-    $("#progress-copy").textContent = completedCount === 0 ? "Day 1 is waiting." : completedCount === challengeDays.length ? "The full lab is cleared." : `Day ${nextIncompleteDay()} is ready.`;
-    $("#hero-day-number").textContent = String(nextIncompleteDay()).padStart(2, "0");
-  }
-
-  function renderToday() {
-    const day = getDay(nextIncompleteDay());
-    const phase = phaseFor(day.day);
-    $("#today-day-badge").textContent = `DAY ${String(day.day).padStart(2, "0")}`;
-    $("#today-phase").textContent = phase.name.toUpperCase();
-    $("#today-topic").textContent = day.topic;
-    $("#today-question").textContent = day.question;
-    $("#today-focus-value").textContent = day.focus;
-    $("#today-evidence").textContent = day.evidence;
-    $("#continue-button").innerHTML = day.day === challengeDays.length ? "Review final mission <span>-></span>" : `Continue day ${day.day} <span>-></span>`;
-  }
-
-  function renderAchievements() {
-    $("#achievement-list").innerHTML = challengeAchievements.map((achievement) => {
-      const unlocked = achievement.test(state);
-      return `<article class="achievement ${unlocked ? "is-unlocked" : ""}"><span class="achievement-icon">${achievement.icon}</span><div><strong>${escapeHtml(achievement.title)}</strong><small>${escapeHtml(achievement.detail)}</small></div><span class="achievement-state">${unlocked ? "UNLOCKED" : "LOCKED"}</span></article>`;
-    }).join("");
-  }
-
-  function renderDialog() {
-    const day = getDay(activeDay);
-    const phase = phaseFor(day.day);
-    const completedSteps = STEP_NAMES.filter((stepName) => stepDone(day.day, stepName)).length;
-    $("#dialog-phase").textContent = `${phase.name.toUpperCase()} / DAY ${String(day.day).padStart(2, "0")}`;
-    $("#dialog-day").textContent = `DAY ${String(day.day).padStart(2, "0")}`;
-    $("#mission-title").textContent = day.topic;
-    $("#dialog-question").textContent = day.question;
-    $("#dialog-output-question").textContent = day.question;
-    $("#dialog-output-evidence").textContent = `Finish with: ${day.evidence}`;
-    $("#mission-progress-fill").style.width = `${completedSteps * 25}%`;
-    $("#mission-progress-copy").textContent = `${completedSteps} / 4 actions complete`;
-    $("#mission-status").textContent = completedSteps === 4 ? "Ready to clear this day." : "Mark only the actions you have completed.";
-    $("#dialog-evidence").textContent = day.evidence;
-    $$(".mission-step").forEach((step) => {
-      const name = step.dataset.step;
-      const done = stepDone(day.day, name);
-      step.classList.toggle("is-complete", done);
-      const button = step.querySelector(".step-button");
-      button.textContent = done ? "Done" : "Mark done";
-      button.setAttribute("aria-pressed", String(done));
-    });
-    $("#complete-day").disabled = !allStepsDone(day.day) || isComplete(day.day);
-    $("#previous-day").disabled = day.day <= 1;
-  }
-
-  function openMission(dayNumber) {
-    if (!isUnlocked(dayNumber) && !isComplete(dayNumber)) return;
-    activeDay = dayNumber;
-    renderDialog();
-    const dialog = $("#mission-dialog");
-    if (dialog.open) return;
-    if (typeof dialog.showModal === "function") dialog.showModal();
-    else dialog.setAttribute("open", "");
-  }
-
-  function closeMission() {
-    const dialog = $("#mission-dialog");
-    if (typeof dialog.close === "function") dialog.close();
-    else dialog.removeAttribute("open");
-  }
-
-  function renderAll() {
-    renderRoadmap();
-    renderProgress();
-    renderToday();
-    renderAchievements();
-    if ($("#mission-dialog").open) renderDialog();
-  }
-
-  $("#continue-button").addEventListener("click", () => openMission(nextIncompleteDay()));
-  $("#open-day").addEventListener("click", () => openMission(nextIncompleteDay()));
-  $("#close-dialog").addEventListener("click", closeMission);
-  $("#previous-day").addEventListener("click", () => openMission(Math.max(1, activeDay - 1)));
-
-  $("#mission-steps").addEventListener("click", (event) => {
-    const button = event.target.closest(".step-button");
-    if (!button) return;
-    const step = button.closest(".mission-step").dataset.step;
-    const key = stepKey(activeDay, step);
-    state.steps[key] = !state.steps[key];
-    saveState();
-    renderDialog();
-  });
-
-  $("#complete-day").addEventListener("click", () => {
-    if (!allStepsDone(activeDay) || isComplete(activeDay)) return;
-    state.completed = Array.from(new Set([...state.completed, activeDay])).sort((a, b) => a - b);
-    state.xp += 100;
-    saveState();
-    renderAll();
-    closeMission();
-    if (state.completed.length < challengeDays.length) {
-      window.setTimeout(() => openMission(nextIncompleteDay()), 250);
-    }
-  });
-
-  $("#reset-progress").addEventListener("click", () => {
-    if (!window.confirm("Reset all challenge progress?")) return;
-    state.completed = [];
-    state.xp = 0;
-    state.steps = {};
-    saveState();
-    renderAll();
-  });
-
-  $("#phase-filter").addEventListener("click", (event) => {
-    const button = event.target.closest("[data-phase]");
-    if (!button) return;
-    activeFilter = button.dataset.phase;
-    $$(".filter-button").forEach((item) => item.classList.toggle("is-active", item === button));
-    renderRoadmap();
-  });
-
-  renderAll();
-})();
+list.addEventListener('click', event => {
+  const button = event.target.closest('button[data-day]');
+  if (button && !button.disabled) openDay(Number(button.dataset.day), button);
+});
+document.querySelectorAll('[data-open-day]').forEach(button => button.addEventListener('click', () => openDay(Number(button.dataset.openDay), button)));
+closeButton.addEventListener('click', () => dialog.close());
+dialog.addEventListener('click', event => { if (event.target === dialog) dialog.close(); });
+dialog.addEventListener('close', () => lastTrigger?.focus());
+render();

@@ -1,119 +1,74 @@
 <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#101b2d">
-    <meta name="description" content="English Tutor by Vadym Sherstiak: try a guided English lesson, practise writing, and prepare for a separate ChatGPT Voice conversation.">
-    <title>English Tutor | 50-Day Start Lab</title>
-    <link rel="stylesheet" href="./styles.css">
-  </head>
-  <body>
-    <main class="shell">
-      <header class="topbar">
-        <a class="brand" href="./index.html" aria-label="English Tutor home">
-          <span class="brand-mark">ET</span>
-          <span><strong>ENGLISH TUTOR</strong><small>START LAB</small></span>
-        </a>
-        <div class="top-actions">
-          <span class="save-status" id="save-status">Saved locally</span>
-          <button class="icon-button" id="reset-progress" type="button" title="Reset all challenge progress">Reset</button>
-        </div>
-      </header>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#132a27">
+  <meta name="description" content="English Tutor: огляд програми від стартової сесії до дня 50, теми уроків і доступні деталі.">
+  <title>Програма 0–50 · English Tutor</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header">
+      <a class="brand" href="./index.html" aria-label="English Tutor — головна">
+        <span class="brand-symbol">e<span>.</span></span>
+        <span class="brand-name">ENGLISH <strong>TUTOR</strong><small>ПРОГРАМА НАВЧАННЯ</small></span>
+      </a>
+      <a class="header-link" href="./daily_task_app/index.html">Відкрити приклад уроку <span aria-hidden="true">↗</span></a>
+    </header>
 
-      <section class="hero-block">
-        <div class="hero-copy">
-          <p class="eyebrow">50-DAY WORK MINDSET LAB</p>
-          <h1>Build English<br><em>you can use.</em></h1>
-          <p class="hero-text">Practise English through ideas about work and everyday life. Try one complete lesson with Ukrainian support, then explore the 50-session learning plan.</p>
-          <div class="hero-actions">
-            <a class="primary-button" href="./daily_task_app/index.html">Try the sample lesson <span>→</span></a>
-            <button class="secondary-button" id="continue-button" type="button">Continue mission <span>→</span></button>
-          </div>
-          <p class="demo-scope">Public prototype · One complete lesson (Day 14) · No account needed</p>
+    <main>
+      <section class="intro" aria-labelledby="page-title">
+        <div class="intro-copy">
+          <p class="eyebrow"><span class="eyebrow-line"></span> Твій маршрут з англійської</p>
+          <h1 id="page-title">Усі уроки.<br><em>Один зрозумілий шлях.</em></h1>
+          <p class="intro-description">Переглядай теми від стартової сесії до дня 50. Відкрий картку, щоб побачити завдання й мовний фокус. Майбутні дні залишаються закритими.</p>
+          <a class="jump-link" href="#days">Перейти до списку <span aria-hidden="true">↓</span></a>
         </div>
-        <div class="hero-orbit" aria-hidden="true">
-          <div class="orbit-ring ring-one"></div>
-          <div class="orbit-ring ring-two"></div>
-          <div class="orbit-core"><span id="hero-day-number">01</span><small>DAY</small></div>
-          <span class="orbit-label label-one">INPUT</span>
-          <span class="orbit-label label-two">SPEAK</span>
-          <span class="orbit-label label-three">PROVE</span>
+        <div class="current-card" aria-label="Поточна позиція в плані">
+          <div class="current-top"><span class="small-label">ЗАРАЗ У ПЛАНІ</span><span class="pulse" aria-hidden="true"></span></div>
+          <div class="current-number">30<span> / 50</span></div>
+          <p class="current-title">Debating My Attention Protocol</p>
+          <p class="current-translation">Захищаю свій протокол уваги</p>
+          <button class="current-action" type="button" data-open-day="30">Деталі дня 30 <span aria-hidden="true">↗</span></button>
         </div>
       </section>
 
-      <section class="progress-strip" aria-label="Challenge progress">
-        <div class="progress-main">
-          <div class="progress-heading"><span>YOUR CHECKLIST</span><strong id="progress-percent">0%</strong></div>
-          <div class="progress-track"><span id="progress-fill"></span></div>
-          <div class="progress-meta"><span id="progress-copy">Day 1 is waiting.</span><span id="xp-copy">0 XP</span></div>
-        </div>
-        <div class="stat-tile"><strong id="completed-count">0</strong><span>days cleared</span></div>
-        <div class="stat-tile"><strong id="achievement-count">0</strong><span>achievements</span></div>
-        <div class="stat-tile"><strong>1</strong><span>complete sample lesson</span></div>
+      <section class="route-status" aria-label="Доступність програми">
+        <div class="route-heading"><div><span class="small-label">ДОСТУП ДО ОПИСІВ</span><strong>Дні 0–30 відкриті</strong></div><span class="route-count">31 <span>/ 51</span></span></div>
+        <div class="route-track" role="img" aria-label="Відкритий опис 31 з 51 днів"><span></span></div>
+        <div class="route-meta"><span>День 0 — старт</span><span>День 30 — поточний</span><span>Дні 31–50 — закриті</span></div>
       </section>
 
-      <section class="content-grid">
-        <div class="roadmap-column">
-          <div class="section-heading">
-            <div><p class="eyebrow">THE ROUTE</p><h2>A plan for 50 practice sessions.</h2></div>
-            <div class="phase-filter" id="phase-filter" role="tablist" aria-label="Filter phases">
-              <button class="filter-button is-active" type="button" data-phase="all">All</button>
-              <button class="filter-button" type="button" data-phase="current">Current</button>
-            </div>
-          </div>
-          <p class="scope-note">This is the learning plan. The available sample is Day 14. Checklist completion and XP are self-reported; they do not measure English ability.</p>
-          <div class="roadmap" id="roadmap"></div>
-        </div>
-
-        <aside class="side-column">
-          <section class="today-card" id="today-card">
-            <div class="card-kicker"><span class="live-dot"></span> CURRENT MISSION</div>
-            <div class="today-top"><span class="day-badge" id="today-day-badge">DAY 01</span><span class="phase-name" id="today-phase">DIAGNOSE</span></div>
-            <h2 id="today-topic">Procrastination is a system, not a character flaw</h2>
-            <p class="today-question" id="today-question">What exactly happens when I delay?</p>
-            <div class="today-focus"><span>LANGUAGE FOCUS</span><strong id="today-focus-value">I tend to... when...</strong></div>
-            <div class="today-evidence"><span>FINISH WITH</span><strong id="today-evidence">60-90 second baseline + 120-word text</strong></div>
-            <button class="primary-button full-button" id="open-day" type="button">Open mission <span>-></span></button>
-          </section>
-
-          <section class="achievements-card">
-            <div class="section-heading compact"><div><p class="eyebrow">COLLECTION</p><h2>Achievements</h2></div><span class="count-pill" id="achievement-summary">0 / 6</span></div>
-            <div class="achievement-list" id="achievement-list"></div>
-          </section>
-
-          <section class="principles-card">
-            <p class="eyebrow">THE RULE</p>
-            <blockquote>“I understand one mechanism. I explain it in English. I test it in real life. I keep the proof.”</blockquote>
-            <p>Every day leaves something behind: a clearer sentence, a stronger answer, or a real decision.</p>
-          </section>
-        </aside>
+      <section class="days-section" id="days" aria-labelledby="days-title">
+        <div class="section-header"><div><p class="eyebrow"><span class="eyebrow-line"></span> 51 зупинка</p><h2 id="days-title">Список днів</h2></div><p class="section-note">Оцінку показуємо лише за наявності запису про результат уроку.</p></div>
+        <div class="legend" aria-label="Позначення статусів"><span><i class="legend-dot available"></i> Опис доступний</span><span><i class="legend-dot current"></i> Поточний день</span><span><i class="legend-dot locked"></i> Закрито</span></div>
+        <div class="day-list" id="day-list"></div>
       </section>
-      <footer class="portfolio-footer"><p>English Tutor · A personal project by Vadym Sherstiak</p><a href="https://github.com/shved21/english-tutor">Source &amp; project story on GitHub ↗</a></footer>
     </main>
 
-    <dialog class="mission-dialog" id="mission-dialog" aria-labelledby="mission-title">
-      <div class="dialog-shell">
-        <div class="dialog-topbar"><span class="dialog-kicker" id="dialog-phase">DIAGNOSE</span><button class="close-button" id="close-dialog" type="button" aria-label="Close mission">Close</button></div>
-        <div class="dialog-heading"><div><p class="eyebrow" id="dialog-day">DAY 01</p><h2 id="mission-title">Procrastination is a system, not a character flaw</h2></div><span class="reward-badge">+100 XP</span></div>
-        <p class="dialog-question" id="dialog-question">What exactly happens when I delay?</p>
-        <div class="mission-progress"><span id="mission-progress-fill"></span></div>
-        <div class="mission-progress-copy"><span id="mission-progress-copy">0 / 4 actions complete</span><span id="mission-status">Build the first piece of evidence.</span></div>
+    <footer class="footer"><span>English Tutor · особиста програма практики англійської</span><a href="https://github.com/shved21/english-tutor">Код на GitHub ↗</a></footer>
+  </div>
 
-        <div class="mission-steps" id="mission-steps">
-          <article class="mission-step" data-step="understand"><span class="step-icon">01</span><div><strong>Understand</strong><p>Read the input and identify the one mechanism behind today's question.</p></div><button class="step-button" type="button">Mark done</button></article>
-          <article class="mission-step" data-step="build"><span class="step-icon">02</span><div><strong>Build</strong><p>Write four to six English sentences using today's construction.</p></div><button class="step-button" type="button">Mark done</button></article>
-          <article class="mission-step" data-step="speak"><span class="step-icon">03</span><div><strong>Speak</strong><p>Record a short answer or complete the GPT Voice conversation.</p></div><button class="step-button" type="button">Mark done</button></article>
-          <article class="mission-step" data-step="prove"><span class="step-icon">04</span><div><strong>Prove</strong><p id="dialog-evidence">Leave one useful action, note, or visible result.</p></div><button class="step-button" type="button">Mark done</button></article>
-        </div>
-
-        <div class="mission-output"><span>Today's control question</span><strong id="dialog-output-question">What exactly happens when I delay?</strong><small id="dialog-output-evidence">Finish with: 60-90 second baseline + 120-word text</small></div>
-        <p class="scope-note">Try the available Day 14 sample separately. It does not change this mission’s checklist.</p>
-        <div class="dialog-actions"><a class="secondary-button" href="./daily_task_app/index.html">Try Day 14 sample</a><button class="secondary-button" id="previous-day" type="button">Previous day</button><button class="primary-button" id="complete-day" type="button" disabled>Complete day <span>-></span></button></div>
+  <dialog class="day-dialog" id="day-dialog" aria-labelledby="detail-title">
+    <div class="dialog-inner">
+      <div class="dialog-top"><span class="dialog-label" id="detail-day"></span><button class="close-button" id="close-dialog" type="button" aria-label="Закрити деталі">×</button></div>
+      <h2 id="detail-title"></h2>
+      <p class="detail-translation" id="detail-translation"></p>
+      <div class="detail-status" id="detail-status"></div>
+      <div class="detail-grid">
+        <div class="detail-block"><span>КОНТРОЛЬНЕ ПИТАННЯ</span><p id="detail-question"></p></div>
+        <div class="detail-block"><span>МОВНИЙ ФОКУС</span><p id="detail-focus"></p></div>
+        <div class="detail-block"><span>ЗАВДАННЯ ДНЯ</span><p id="detail-artifact"></p></div>
+        <div class="detail-block"><span>ОЧІКУВАНИЙ РЕЗУЛЬТАТ</span><p id="detail-evidence"></p></div>
       </div>
-    </dialog>
-
-    <script src="./data.js"></script>
-    <script src="./app.js"></script>
-  </body>
+      <p class="detail-note" id="detail-note"></p>
+      <div class="dialog-actions" id="dialog-actions"></div>
+    </div>
+  </dialog>
+  <script src="./data.js"></script>
+  <script src="./progress.js"></script>
+  <script src="./app.js"></script>
+</body>
 </html>
