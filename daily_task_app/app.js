@@ -18,8 +18,6 @@ const questCounter = document.querySelector("#quest-counter");
 const questProgressFill = document.querySelector("#quest-progress-fill");
 const prevStepButton = document.querySelector("#prev-step");
 const nextStepButton = document.querySelector("#next-step");
-const toggleTranslationButton = document.querySelector("#toggle-translation");
-const translationCard = document.querySelector("#translation-card");
 const copyButton = document.querySelector("#copy");
 const promptBox = document.querySelector("#prompt");
 const copyStatus = document.querySelector("#copy-status");
@@ -1567,11 +1565,6 @@ document.querySelector("#check-full-answer")?.addEventListener("click", validate
 
 prevStepButton?.addEventListener("click", () => showStep(currentStep - 1));
 nextStepButton?.addEventListener("click", () => showStep(currentStep + 1));
-
-toggleTranslationButton?.addEventListener("click", () => {
-  translationCard.hidden = !translationCard.hidden;
-  toggleTranslationButton.textContent = translationCard.hidden ? "Показати переклад" : "Сховати переклад";
-});
 
 copyButton?.addEventListener("click", async () => {
   try {

@@ -664,6 +664,64 @@ details p {
   background: linear-gradient(135deg, rgba(232, 242, 238, 0.92), rgba(251, 252, 248, 0.98));
 }
 
+.reading-card {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: clamp(24px, 4vw, 44px);
+}
+
+.reading-card .input-head {
+  margin-bottom: 24px;
+}
+
+.reading-card .input-head h3 {
+  max-width: 720px;
+  margin: 0;
+  font-size: clamp(25px, 3.2vw, 36px);
+  line-height: 1.12;
+  letter-spacing: -0.025em;
+}
+
+.reading-card p {
+  max-width: 720px;
+  margin: 0 auto 18px 0;
+  font-size: 18px;
+  font-weight: 450;
+  line-height: 1.75;
+}
+
+.reading-card p:last-child {
+  margin-bottom: 0;
+}
+
+.reading-card .personal-note {
+  margin-top: 26px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+  color: var(--accent);
+  font-size: 16px;
+  font-weight: 650;
+}
+
+.translation-disclosure {
+  max-width: 900px;
+  margin: 16px auto 0;
+  padding: 14px 18px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+}
+
+.translation-disclosure summary {
+  color: var(--accent);
+  cursor: pointer;
+  font-weight: 750;
+}
+
+.translation-disclosure .translation-card {
+  margin-top: 16px;
+}
+
 .speaking-text {
   background: var(--panel);
 }
