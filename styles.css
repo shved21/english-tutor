@@ -5,3 +5,41 @@
 @media(max-width:680px){.page-shell{width:min(100% - 28px,600px)}.site-header{padding:16px 0}.header-link{max-width:155px;padding:9px 12px;font-size:10px}.brand-symbol{width:40px;height:40px;font-size:27px}.brand-name{font-size:11px}.brand-name small{font-size:7px}.intro{grid-template-columns:1fr;gap:25px;padding:42px 0 30px}.intro-description{font-size:14px}.current-card{min-height:0;padding:24px}.current-number{font-size:53px}.route-status{padding:20px}.route-heading strong{font-size:16px}.route-meta{font-size:9px}.days-section{padding:48px 0}.section-header{align-items:start;flex-direction:column;gap:8px}.section-header h2{font-size:30px}.section-note{text-align:left}.legend{gap:12px;margin:22px 0 15px}.day-row{grid-template-columns:54px minmax(0,1fr) 22px;min-height:86px;padding:13px;gap:9px}.day-index{font-size:10px}.day-index strong{font-size:21px}.day-title strong{font-size:13px}.day-title small{font-size:11px}.day-grade{grid-column:2;grid-row:2;display:flex;gap:5px;align-items:center;font-size:9px}.day-grade strong{font-size:11px}.day-arrow{grid-column:3;grid-row:1/3}.day-dialog{max-height:90vh}.dialog-inner{padding:22px}.detail-grid{grid-template-columns:1fr}.detail-block{min-height:0}.dialog-actions{flex-direction:column}.dialog-actions a,.dialog-actions button{text-align:center}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
 .detail-block p{white-space:pre-line}
+
+
+/* Compact square lesson cards */
+.day-row{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:7px;min-height:0;aspect-ratio:1/1;padding:15px;text-align:left}
+.day-index{font-size:9px;letter-spacing:.12em;color:var(--muted)}
+.day-index strong{margin-top:2px;font-size:25px}
+.day-title{width:100%;gap:4px;align-content:start}
+.day-title strong,.day-title small{display:-webkit-box;-webkit-box-orient:vertical;overflow:hidden}
+.day-title strong{-webkit-line-clamp:2;padding-right:13px;font-size:13px;line-height:1.25}
+.day-title small{-webkit-line-clamp:2;font-size:10px;line-height:1.3}
+.day-grade{display:flex;flex-wrap:wrap;align-items:baseline;gap:5px;margin-top:auto;font-size:8px;letter-spacing:.09em}
+.day-grade strong{font-size:10px;line-height:1.2}
+.detail-grid[hidden]{display:none}
+.day-state{max-width:100%;padding:5px 8px;font-size:9px;white-space:normal;line-height:1.2}
+.day-arrow{position:absolute;top:11px;right:12px;font-size:16px}
+.current-action{cursor:pointer;text-decoration:none}
+.current-action:focus-visible{outline:3px solid #bcd8c9;outline-offset:3px}
+@media(min-width:1101px){.day-list{grid-template-columns:repeat(8,minmax(0,1fr));grid-template-rows:repeat(7,minmax(0,1fr));grid-auto-flow:column;gap:10px}}
+@media(max-width:1100px){.day-list{grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:none;grid-auto-flow:row;gap:10px}}
+@media(max-width:680px){.day-list{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.day-row{gap:6px;padding:10px}.day-index{font-size:8px}.day-index strong{font-size:21px}.day-title strong{font-size:11px}.day-title small{font-size:9px}.day-grade{font-size:7px}.day-grade strong{font-size:9px}.day-state{padding:4px 6px;font-size:8px}.day-arrow{top:7px;right:8px;font-size:14px}}
+@media(max-width:360px){.day-list{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* Minimal program overview: color carries completion state without status labels. */
+.site-header{justify-content:flex-end;padding:16px 0;border:0}
+.header-link{border-color:transparent;background:transparent;padding:10px 0}
+.route-status{padding:0 0 22px;border:0;background:transparent;box-shadow:none}
+.route-track{height:8px;margin:8px 0 0;background:#e2e4e1}
+.route-track span{background:#43815f;transition:width .25s ease}
+.days-section{padding:0 0 32px}
+.day-row.is-done,.day-row.is-good{border-color:#b5d2bd;background:#e4f1e7}
+.day-row.is-incomplete,.day-row.is-poor{border-color:#e2b7b5;background:#f8e6e5}
+.day-row.is-locked{border-color:#d4d6d3;background:#e4e5e2;color:#70736f;box-shadow:none}
+.day-row.is-locked .day-index,.day-row.is-locked .day-title small,.day-row.is-locked .day-arrow{color:#777b76}
+.day-grade{margin-top:auto;padding:5px 8px;border-radius:7px;background:rgba(255,255,255,.75);font-size:11px;font-weight:800;color:var(--ink)}
+.day-row.is-good .day-grade{color:#276342}
+.day-row.is-poor .day-grade{color:#9b3e3b}
+.detail-note{padding:14px;border-radius:9px;background:#f1f2ef}
+@media(max-width:680px){.site-header{padding:10px 0}.route-status{padding-bottom:14px}.days-section{padding-bottom:20px}}

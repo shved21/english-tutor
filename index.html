@@ -4,51 +4,26 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#132a27">
-  <meta name="description" content="English Tutor: огляд програми від стартової сесії до дня 50, теми уроків і доступні деталі.">
-  <title>Програма 0–50 · English Tutor</title>
+  <meta name="description" content="Програма English Tutor: дні навчання й особисті результати.">
+  <title>English Tutor · програма</title>
   <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
   <div class="page-shell">
     <header class="site-header">
-      <a class="brand" href="./index.html" aria-label="English Tutor — головна">
-        <span class="brand-symbol">e<span>.</span></span>
-        <span class="brand-name">ENGLISH <strong>TUTOR</strong><small>ПРОГРАМА НАВЧАННЯ</small></span>
-      </a>
-      <a class="header-link" href="./daily_task_app/index.html">Відкрити приклад уроку <span aria-hidden="true">↗</span></a>
+      <a class="header-link" href="./daily_task_app/day30/index.html">До сьогоднішніх задач <span aria-hidden="true">↗</span></a>
     </header>
 
     <main>
-      <section class="intro" aria-labelledby="page-title">
-        <div class="intro-copy">
-          <p class="eyebrow"><span class="eyebrow-line"></span> Твій маршрут з англійської</p>
-          <h1 id="page-title">Усі уроки.<br><em>Один зрозумілий шлях.</em></h1>
-          <p class="intro-description">Переглядай теми від стартової сесії до дня 50. Відкрий картку, щоб побачити завдання й мовний фокус. Майбутні дні залишаються закритими.</p>
-          <a class="jump-link" href="#days">Перейти до списку <span aria-hidden="true">↓</span></a>
-        </div>
-        <div class="current-card" aria-label="Поточна позиція в плані">
-          <div class="current-top"><span class="small-label">ЗАРАЗ У ПЛАНІ</span><span class="pulse" aria-hidden="true"></span></div>
-          <div class="current-number">30<span> / 50</span></div>
-          <p class="current-title">Debating My Attention Protocol</p>
-          <p class="current-translation">Захищаю свій протокол уваги</p>
-          <button class="current-action" type="button" data-open-day="30">Деталі дня 30 <span aria-hidden="true">↗</span></button>
-        </div>
-      </section>
-
-      <section class="route-status" aria-label="Доступність програми">
-        <div class="route-heading"><div><span class="small-label">ДОСТУП ДО ОПИСІВ</span><strong>Дні 0–30 відкриті</strong></div><span class="route-count">31 <span>/ 51</span></span></div>
-        <div class="route-track" role="img" aria-label="Відкритий опис 31 з 51 днів"><span></span></div>
-        <div class="route-meta"><span>День 0 — старт</span><span>День 30 — поточний</span><span>Дні 31–50 — закриті</span></div>
+      <section class="route-status" aria-label="Прогрес навчання">
+        <div class="route-track" role="progressbar" aria-label="Завершені дні" aria-valuemin="0" aria-valuemax="50" aria-valuenow="0"><span id="progress-fill"></span></div>
       </section>
 
       <section class="days-section" id="days" aria-labelledby="days-title">
-        <div class="section-header"><div><p class="eyebrow"><span class="eyebrow-line"></span> 51 зупинка</p><h2 id="days-title">Список днів</h2></div><p class="section-note">Оцінку показуємо лише за наявності запису про результат уроку.</p></div>
-        <div class="legend" aria-label="Позначення статусів"><span><i class="legend-dot available"></i> Опис доступний</span><span><i class="legend-dot current"></i> Поточний день</span><span><i class="legend-dot locked"></i> Закрито</span></div>
-        <div class="day-list" id="day-list"></div>
+        <div class="day-list" id="day-list" aria-label="Дні навчальної програми"></div>
       </section>
     </main>
 
-    <footer class="footer"><span>English Tutor · особиста програма практики англійської</span><a href="https://github.com/shved21/english-tutor">Код на GitHub ↗</a></footer>
   </div>
 
   <dialog class="day-dialog" id="day-dialog" aria-labelledby="detail-title">
@@ -56,8 +31,7 @@
       <div class="dialog-top"><span class="dialog-label" id="detail-day"></span><button class="close-button" id="close-dialog" type="button" aria-label="Закрити деталі">×</button></div>
       <h2 id="detail-title"></h2>
       <p class="detail-translation" id="detail-translation"></p>
-      <div class="detail-status" id="detail-status"></div>
-      <div class="detail-grid">
+      <div class="detail-grid" id="detail-grid">
         <div class="detail-block"><span>КОНТРОЛЬНЕ ПИТАННЯ</span><p id="detail-question"></p></div>
         <div class="detail-block"><span>МОВНИЙ ФОКУС</span><p id="detail-focus"></p></div>
         <div class="detail-block"><span>ЗАВДАННЯ ДНЯ</span><p id="detail-artifact"></p></div>

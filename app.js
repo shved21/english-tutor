@@ -159,8 +159,44 @@ challengeDays[29] = {
   evidence: 'A debated answer and a real five-minute focus test'
 };
 
+// Use the actual saved lesson titles for the most recent five days.
+Object.assign(challengeDays[25], {
+  topic: 'Protecting Attention',
+  question: 'How do I protect my attention when work feels fragile?'
+});
+Object.assign(challengeDays[26], {
+  topic: 'Protecting a Focus Block',
+  question: 'How do I protect a focus block without ignoring real priorities?'
+});
+Object.assign(challengeDays[27], {
+  topic: 'Returning After an Interruption',
+  question: 'How do I recover focus after an unavoidable interruption?'
+});
+Object.assign(challengeDays[28], {
+  topic: 'Entering Focus With a Start Ritual',
+  question: 'What is my personal protocol for entering focus?'
+});
+topicUk[25] = 'Як захистити увагу, коли робота дається важко';
+topicUk[26] = 'Як захистити блок фокусної роботи й не ігнорувати важливе';
+topicUk[27] = 'Як повернути фокус після неминучого переривання';
+topicUk[28] = 'Вхід у фокус через ритуал початку';
+topicUk[29] = 'Захищаю свій протокол уваги';
+
 const today = publicProgress.currentDay;
 const allDays = [dayZero, ...challengeDays];
+const lessonPages = new Map([
+  [14, './daily_task_app/index.html'],
+  [20, './daily_task_app/archive/index.html?day=20'],
+  [22, './daily_task_app/archive/index.html?day=22'],
+  [23, './daily_task_app/archive/index.html?day=23'],
+  [24, './daily_task_app/archive/index.html?day=24'],
+  [25, './daily_task_app/archive/index.html?day=25'],
+  [26, './daily_task_app/archive/index.html?day=26'],
+  [27, './daily_task_app/archive/index.html?day=27'],
+  [28, './daily_task_app/archive/index.html?day=28'],
+  [29, './daily_task_app/archive/index.html?day=29'],
+  [30, './daily_task_app/day30/index.html']
+]);
 const list = document.getElementById('day-list');
 const dialog = document.getElementById('day-dialog');
 const closeButton = document.getElementById('close-dialog');
@@ -174,59 +210,77 @@ function node(tag, className, value) {
 }
 function ratingFor(day) {
   const value = publicProgress.ratings[day];
-  return typeof value === 'string' && value.trim() ? value : 'Немає запису';
+  return typeof value === 'number' && Number.isFinite(value) && value >= 0 && value <= 10 ? value : null;
 }
 function stateFor(day) {
-  if (day > today) return 'locked';
+  if (day === 0 || day > today) return 'locked';
   if (day === today) return 'current';
   return 'available';
 }
 function stateText(state) {
-  return {locked:'Закрито', current:'Поточний', available:'Опис доступний'}[state];
+  return {locked:'Закрито', current:'Поточний', available:'Відкрито'}[state];
+}
+function visualStateFor(day, state) {
+  if (state === 'locked') return 'locked';
+  const rating = ratingFor(day);
+  if (rating !== null) return rating >= 7 ? 'good' : 'poor';
+  return publicProgress.selfReportedCompletedDays.includes(day) ? 'done' : 'incomplete';
+}
+function completedCount() {
+  return allDays.filter(lesson => lesson.day > 0 && (
+    publicProgress.selfReportedCompletedDays.includes(lesson.day) || ratingFor(lesson.day) !== null
+  )).length;
 }
 function render() {
   const fragment = document.createDocumentFragment();
   for (const lesson of allDays) {
     const state = stateFor(lesson.day);
-    const row = node('button', `day-row is-${state}`);
+    const visualState = visualStateFor(lesson.day, state);
+    const row = node('button', `day-row is-${visualState}`);
     row.type = 'button';
     row.dataset.day = String(lesson.day);
     row.disabled = state === 'locked';
-    row.setAttribute('aria-label', `День ${lesson.day}. ${lesson.topic}. ${topicUk[lesson.day]}. ${stateText(state)}. Оцінка: ${ratingFor(lesson.day)}`);
-    const index = node('span','day-index','ДЕНЬ');
-    index.append(node('strong','',String(lesson.day).padStart(2,'0')));
+    const numberLabel = lesson.day === 0 ? 'Старт' : `День ${lesson.day}`;
+    const rating = ratingFor(lesson.day);
+    const qualityLabel = rating === null ? '' : ` Оцінка ${rating} з 10.`;
+    row.setAttribute('aria-label', `${numberLabel}. ${lesson.topic}. ${topicUk[lesson.day]}. ${stateText(state)}.${qualityLabel}`);
+    const index = node('span','day-index', lesson.day === 0 ? 'СТАРТ' : '');
+    if (lesson.day !== 0) index.append(node('strong','',String(lesson.day).padStart(2,'0')));
     const title = node('span','day-title');
     title.append(node('strong','',lesson.topic),node('small','',topicUk[lesson.day]));
-    const grade = node('span','day-grade','ОЦІНКА');
-    grade.append(node('strong','',ratingFor(lesson.day)));
-    row.append(index,title,grade,node('span','day-state',stateText(state)),node('span','day-arrow',state === 'locked' ? '🔒' : '↗'));
+    row.append(index,title);
+    if (rating !== null) row.append(node('span','day-grade',`${rating}/10`));
+    row.append(node('span','day-arrow',state === 'locked' ? '🔒' : '↗'));
     fragment.append(row);
   }
   list.append(fragment);
+  const count = completedCount();
+  const progressBar = document.querySelector('.route-track');
+  progressBar.setAttribute('aria-valuenow', String(count));
+  progressBar.querySelector('span').style.width = `${count / 50 * 100}%`;
 }
 function setText(id, value) { document.getElementById(id).textContent = value; }
 function openDay(day, trigger) {
   const lesson = allDays[day];
   if (!lesson || day > today) return;
   lastTrigger = trigger || null;
-  setText('detail-day', `ДЕНЬ ${String(day).padStart(2,'0')} · ПЛАН УРОКУ`);
+  const hasFullLesson = lessonPages.has(day);
+  setText('detail-day', `ДЕНЬ ${String(day).padStart(2,'0')} · ${hasFullLesson ? 'ПЛАН УРОКУ' : 'МАТЕРІАЛ НЕ ЗНАЙДЕНО'}`);
   setText('detail-title', lesson.topic);
   setText('detail-translation', topicUk[day]);
-  setText('detail-status', `${stateText(stateFor(day))} · Оцінка: ${ratingFor(day)}`);
+  document.getElementById('detail-grid').hidden = !hasFullLesson;
   setText('detail-question', `${lesson.question}\n${questionUk[day]}`);
   setText('detail-focus', `${lesson.focus}\n${detailsUk[day][0]}`);
   setText('detail-artifact', `${lesson.artifact}\n${detailsUk[day][1]}`);
   setText('detail-evidence', `${lesson.evidence}\n${detailsUk[day][2]}`);
-  setText('detail-note', day === 14
-    ? 'Для дня 14 опубліковано повний інтерактивний урок. Його відкриття не зараховує проходження.'
-    : day === 0
-      ? 'Це стартова сесія. Її опис відокремлено від 50 тематичних уроків.'
-      : 'Тут показано опис із програми. Повний інтерактивний урок для цього дня ще не опубліковано. Позиція в плані не означає, що день пройдено.');
+  setText('detail-note', hasFullLesson
+    ? 'Це короткий опис із програми. Натисни «Відкрити повний урок», щоб перейти до всіх восьми кроків. Перегляд не зараховує проходження.'
+    : 'У цій Git-версії не збережено повний матеріал уроку. Замість нього не показую скорочений план.');
   const actions = document.getElementById('dialog-actions');
   actions.replaceChildren();
-  if (day === 14) {
-    const link = node('a','', 'Відкрити повний урок ↗');
-    link.href = './daily_task_app/index.html';
+  if (hasFullLesson) {
+    const link = node('a','', day === 14 ? 'Відкрити повний урок ↗' : 'Відкрити повний урок ↗');
+    link.href = lessonPages.get(day);
     actions.append(link);
   }
   const close = node('button','', 'Закрити');
@@ -238,9 +292,12 @@ function openDay(day, trigger) {
 
 list.addEventListener('click', event => {
   const button = event.target.closest('button[data-day]');
-  if (button && !button.disabled) openDay(Number(button.dataset.day), button);
+  if (button && !button.disabled) {
+    const day = Number(button.dataset.day);
+    if (lessonPages.has(day)) window.location.href = lessonPages.get(day);
+    else openDay(day, button);
+  }
 });
-document.querySelectorAll('[data-open-day]').forEach(button => button.addEventListener('click', () => openDay(Number(button.dataset.openDay), button)));
 closeButton.addEventListener('click', () => dialog.close());
 dialog.addEventListener('click', event => { if (event.target === dialog) dialog.close(); });
 dialog.addEventListener('close', () => lastTrigger?.focus());
