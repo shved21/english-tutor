@@ -38,7 +38,7 @@ The local static server was tested in the Codex in-app browser, with desktop and
 | Check a repair item; refresh | The manual selection persists. |
 | Navigate all eight screens | The flow remains usable; no JavaScript errors were observed during the walkthrough. |
 
-The [screenshots](../README.md#screenshots) show the real interface with neutral demo data. The mobile image is a cropped view of the sample's header at the narrow layout.
+The screenshots in [`docs/screenshots/`](screenshots/) show the interface with neutral demo data. The mobile image is a cropped view of the trainer header at the narrow layout.
 
 ## Scope remaining
 
